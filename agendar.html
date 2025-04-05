@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendar Consulta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+        <img src="/img/smiling_7298827.png" alt="Logo">
+      <nav>
+        <ul>
+          <li><a href="index2.html">Página Inicial</a></li>
+          <li><a href="cadastro.html">Cadastro de Tutor e Pet</a></li>
+          <li><a href="agendar.html">Agendar Consulta</a></li>
+          <li><a href="consultar.html">Agendamentos</a></li>
+          <li><a href="atualizar.html">Atualizar/Remover Consulta</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+      <div class="container">
+        <h1>Agendamento de Consulta Veterinária</h1>
+        <form id="form-agendamento" action="#" method="POST">
+          <label for="nome_cliente">Nome do Cliente:</label>
+          <input type="text" id="nome_cliente" name="nome_cliente" required>
+      
+          <label for="cpf_cliente">CPF:</label>
+          <input type="text" id="cpf_cliente" name="cpf_cliente" required>
+      
+          <label for="nome_pet">Nome do Pet:</label>
+          <input type="text" id="nome_pet" name="nome_pet" required>
+      
+          <label for="data_consulta">Data da Consulta:</label>
+          <input type="date" id="data_consulta" name="data_consulta" required>
+      
+          <label for="hora_consulta">Hora da Consulta:</label>
+          <select id="hora_consulta" name="hora_consulta" required>
+            <!-- Os horários serão preenchidos pelo JS -->
+          </select>
+      
+          <label for="tipo_consulta">Tipo de Consulta:</label>
+          <select id="tipo_consulta" name="tipo_consulta" required>
+            <option value="emergencial">Emergencial</option>
+            <option value="rotina">Rotina</option>
+            <option value="vacina">Vacinação</option>
+            <option value="retorno">Retorno</option>
+            <option value="exames">Exames</option>
+            <option value="castracao">Castração</option>
+            
+          </select>
+      
+          <br><br>
+          <button type="submit">Agendar Consulta</button>
+        </form>
+      </div>
+      
+</body>
+
+<script>
+
+const horariosDisponiveis = [
+    "08:00","08:30", "09:00","09:30", "10:00","10:30", "11:00",
+    "13:00", "14:30","08:00", "15:00","15:30", "16:00","17:00","18:00"
+  ];
+
+  // Simulando horários já agendados
+  const horariosIndisponiveis = ["10:00", "14:00","16:00","18:00"];
+
+  const selectHora = document.getElementById("hora_consulta");
+
+  horariosDisponiveis.forEach(hora => {
+    const option = document.createElement("option");
+    option.value = hora;
+    option.textContent = horariosIndisponiveis.includes(hora)
+      ? `${hora} - Indisponível`
+      : hora;
+
+    if (horariosIndisponiveis.includes(hora)) {
+      option.disabled = true;
+      option.style.color = "#999";
+    }
+
+    selectHora.appendChild(option);
+  });
+</script>
+</html>
