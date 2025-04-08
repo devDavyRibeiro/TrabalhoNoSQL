@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atualizar/Remover Consulta</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+        <img src="/img/smiling_7298827.png" alt="Logo">
+      <nav>
+        <ul>
+          <li><a href="index2.html">Página Inicial</a></li>
+          <li><a href="cadastro.html">Cadastro de Pet</a></li>
+          <li><a href="agendar.html">Agendar Estadia</a></li>
+          <li><a href="consultar.html">Consulta de Estadias</a></li>
+          <li><a href="atualizar.html">Atualizar/Remover Estadia</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Atualizar ou Cancelar Estadia</h1>
+    <form action="#" method="POST">
+      <label for="nome_pet">Nome do Pet:</label>
+      <input type="text" id="nome_pet" name="nome_pet" required>
+
+      <label for="data_consulta">Data da Estadia:</label>
+      <input type="date" id="data_consulta" name="data_consulta">
+
+      <label for="hora_consulta">Hora de Entrada:</label>
+      <input type="time" id="hora_consulta" name="hora_consulta">
+
+      <label for="acao">Escolha uma ação:</label>
+      <select id="acao" name="acao" required>
+        <option value="atualizar">Atualizar</option>
+        <option value="remover">Remover</option>
+      </select>
+
+      <button type="submit">Executar Ação</button>
+    </form>
+  </div>
+</body>
+</html>
