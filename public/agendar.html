@@ -13,19 +13,19 @@
       <nav>
         <ul>
           <li><a href="index2.html">Página Inicial</a></li>
-          <li><a href="cadastro.html">Cadastro de Tutor e Pet</a></li>
-          <li><a href="agendar.html">Agendar Consulta</a></li>
-          <li><a href="consultar.html">Agendamentos</a></li>
-          <li><a href="atualizar.html">Atualizar/Remover Consulta</a></li>
+          <li><a href="cadastro.html">Cadastro de Pet</a></li>
+          <li><a href="agendar.html">Agendar Estadia</a></li>
+          <li><a href="consultar.html">Consulta de Estadias</a></li>
+          <li><a href="atualizar.html">Atualizar/Remover Estadia</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
       <div class="container">
-        <h1>Agendamento de Consulta Veterinária</h1>
+        <h1>Reserva de Estadia</h1>
         <form id="form-agendamento" action="#" method="POST">
-          <label for="nome_cliente">Nome do Cliente:</label>
+          <label for="nome_cliente">Nome do Tutor:</label>
           <input type="text" id="nome_cliente" name="nome_cliente" required>
       
           <label for="cpf_cliente">CPF:</label>
@@ -34,27 +34,22 @@
           <label for="nome_pet">Nome do Pet:</label>
           <input type="text" id="nome_pet" name="nome_pet" required>
       
-          <label for="data_consulta">Data da Consulta:</label>
+          <label for="data_consulta">Data da Estadia:</label>
           <input type="date" id="data_consulta" name="data_consulta" required>
       
-          <label for="hora_consulta">Hora da Consulta:</label>
+          <label for="hora_consulta">Horario de Entrada:</label>
+          <select id="hora_consulta" name="hora_consulta" required>
+
+            <label for="hora_consulta">Horario de Retirada:</label>
           <select id="hora_consulta" name="hora_consulta" required>
             <!-- Os horários serão preenchidos pelo JS -->
           </select>
       
-          <label for="tipo_consulta">Tipo de Consulta:</label>
-          <select id="tipo_consulta" name="tipo_consulta" required>
-            <option value="emergencial">Emergencial</option>
-            <option value="rotina">Rotina</option>
-            <option value="vacina">Vacinação</option>
-            <option value="retorno">Retorno</option>
-            <option value="exames">Exames</option>
-            <option value="castracao">Castração</option>
-            
+                    
           </select>
       
           <br><br>
-          <button type="submit">Agendar Consulta</button>
+          <button type="submit">Reservar Estadia</button>
         </form>
       </div>
       
