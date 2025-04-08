@@ -2,18 +2,15 @@ import express from "express"
 
 const router = express.Router()
 
-router.get("/", (req,res)=>{
-    req.body
-}) //listagem pets
+router.get("/") //listagem geral 
+router.get("/nome") //listagem por nome
 
-router.get("/nome") //listagem nome
+router.get("/:id") // listagem por ID
 
-router.get("/:id") 
+router.post("/") // criação
 
-router.post("/") 
+router.put("/:id") //atualização
 
-router.put("/:id") 
-
-router.delete("/:id")
+router.delete("/:id") // exclusão
 
 export default router
