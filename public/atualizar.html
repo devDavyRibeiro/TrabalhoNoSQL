@@ -13,35 +13,47 @@
       <nav>
         <ul>
           <li><a href="index2.html">Página Inicial</a></li>
-          <li><a href="cadastro.html">Cadastro de Tutor e Pet</a></li>
-          <li><a href="agendar.html">Agendar Consulta</a></li>
-          <li><a href="consultar.html">Agendamentos</a></li>
-          <li><a href="atualizar.html">Atualizar/Remover Consulta</a></li>
+          <li><a href="cadastro.html">Cadastro de Pet</a></li>
+          <li><a href="agendar.html">Reservar Hospedagem</a></li>
+          <li><a href="consultar.html">Consulta de Reservas</a></li>
+          <li><a href="atualizar.html">Atualizar/Remover Reserva</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
+
+
   <div class="container">
-    <h1>Atualizar ou Remover Consulta</h1>
+
+    <h1>Atualizar ou Cancelar Reserva</h1>
+
     <form action="#" method="POST">
+
+      <label for="nome_pet">CPF Tutor:</label>
+      <input type="text" id="cpf_tutor" name="cpf_tutor" required>
+
+
       <label for="nome_pet">Nome do Pet:</label>
       <input type="text" id="nome_pet" name="nome_pet" required>
-
-      <label for="data_consulta">Data da Consulta:</label>
-      <input type="date" id="data_consulta" name="data_consulta">
-
-      <label for="hora_consulta">Hora da Consulta:</label>
-      <input type="time" id="hora_consulta" name="hora_consulta">
+   
 
       <label for="acao">Escolha uma ação:</label>
+
       <select id="acao" name="acao" required>
+
         <option value="atualizar">Atualizar</option>
+
         <option value="remover">Remover</option>
+
       </select>
 
+
+
       <button type="submit">Executar Ação</button>
+
     </form>
+
   </div>
 </body>
 </html>
