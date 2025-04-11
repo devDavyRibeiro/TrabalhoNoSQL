@@ -23,10 +23,10 @@
   </header>
 
       <div class="container">
-        <h1>Agendamento de Hospedagem</h1>
+        <h1>Agendamento de Consulta Veterinária</h1>
         <form id="form-agendamento" action="#" method="POST">
-          <label for="nome_cliente">Nome do Tutor:</label>
-          <input type="text" id="nome_tutor" name="nome_tutor" required>
+          <label for="nome_cliente">Nome do Cliente:</label>
+          <input type="text" id="nome_cliente" name="nome_cliente" required>
       
           <label for="cpf_cliente">CPF Tutor:</label>
           <input type="text" id="cpf_tutor" name="cpf_tutor" required>
@@ -34,22 +34,27 @@
           <label for="nome_pet">Nome do Pet:</label>
           <input type="text" id="nome_pet" name="nome_pet" required>
       
-          <label for="data_consulta">Data de Entrada da Estadia:</label>
-          <input type="datetime" id="data_estadia" name="data_estadia" required>
-
-         
-
-          <label for="data_consulta">Data de Saída da Estadia:</label>
-          <input type="datetime" id="data_saida_estadia" name="data_saida_estadia" required>
+          <label for="data_consulta">Data da Consulta:</label>
+          <input type="date" id="data_consulta" name="data_consulta" required>
       
-          
+          <label for="hora_consulta">Hora da Consulta:</label>
+          <select id="hora_consulta" name="hora_consulta" required>
             <!-- Os horários serão preenchidos pelo JS -->
           </select>
       
-          
+          <label for="tipo_consulta">Tipo de Consulta:</label>
+          <select id="tipo_consulta" name="tipo_consulta" required>
+            <option value="emergencial">Emergencial</option>
+            <option value="rotina">Rotina</option>
+            <option value="vacina">Vacinação</option>
+            <option value="retorno">Retorno</option>
+            <option value="exames">Exames</option>
+            <option value="castracao">Castração</option>
+            
+          </select>
       
           <br><br>
-          <button type="submit">Agendar Hospedagem</button>
+          <button type="submit">Agendar Consulta</button>
         </form>
       </div>
       
