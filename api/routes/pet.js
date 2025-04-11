@@ -1,8 +1,8 @@
 import express from "express"
-
+import { getPets } from "../controllers/pet"
 const router = express.Router()
 
-router.get("/") //listagem geral 
+router.get("/", getPets) //listagem geral 
 router.get("/nome") //listagem por nome
 
 router.get("/:id") // listagem por ID
