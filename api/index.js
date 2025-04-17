@@ -1,5 +1,6 @@
 import express, { json } from 'express';
 import petRouter from './routes/pet.js';
+import agendaRouter from './routes/agendas.js';  // Ajuste o caminho se necessário
 import { connectMongoDB } from './config/db.js';
 import cors from 'cors'
 
@@ -11,6 +12,8 @@ app.use(express.json())
 app.use('/', express.static('public'))
 
 app.use('/pets', petRouter)
+app.use('/agendas', agendaRouter);  // Agora o prefixo '/agenda' será usado para suas rotas
+
 
 
 connectMongoDB(app).then(() => {
