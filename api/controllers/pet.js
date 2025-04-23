@@ -65,21 +65,50 @@ export const postPet = async(req,res)=>{
         res.status(500).json({ error: true, message: "Failed to create pet" })
     }
 }
-export const deletePet = async(req,res)=>{
-    try {
-        const id = req.params;
-        const db = req.app.locals.db;
-        
-        const result = await db.collection('pet').deleteOne({
-            _id: new ObjectId(id)
-        });
 
-        if(result.deletedCount === 0){
-           return res.status(404).json({ error: true, message: "Pet doesn't found"})
-        } 
-        return res.status(200).json(result);
-    } catch (error) {
-        console.error("Error deleting pet:", error)
-        res.status(500).json({ error: true, message: "Failed to delete pet" })
+export const putPets = async (req, res) => {
+    const db = req.app.locals.db;
+    const id = req.params.id; // pegando o ID
+    const {nome, especie, raca, datanasc, sexo, porte, observacoes, peso, cpfCliente} = req.body;
+    const novosDadosPets ={
+        nome,
+        especie,
+        raca,
+        datanasc,
+        sexo,
+        porte,
+        observacoes,
+        peso,
+        cpfCliente,
+        updated_at : new Date(),
     }
-}
+    
+
+    const result = await db.collection('pet').updateOne(
+        { _id: new ObjectId (id) }, // procurando o pet pelo campo "id"
+        { $set: novosDadosPets } // atualizando os dados
+    );
+    if(result.updateCount === 0){
+        return res.status(404).json({ mensagem: 'Pet não encontrado.' });
+    }
+    res.status(200).json({ mensagem: 'Pet atualizado com sucesso!' });
+};
+
+// Delete Pets
+export const deletePets = async (req, res) => {
+    const db = req.app.locals.db;
+    const id = req.params.id;
+
+    try {
+        const resultado = await db.collection('pet').deleteOne({ id: id });
+
+        if (resultado.deletedCount === 0) {
+            return res.status(404).json({ mensagem: 'Pet não encontrado.' });
+        }
+
+        res.status(200).json({ mensagem: 'Pet deletado com sucesso!' });
+    } catch (erro) {
+        res.status(500).json({ mensagem: 'Erro ao deletar o pet.', erro });
+    }
+};
+

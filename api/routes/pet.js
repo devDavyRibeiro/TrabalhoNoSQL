@@ -1,8 +1,5 @@
 import express from "express";
-import {getPets, getPetID, postPet, deletePet} from "../controllers/pet.js"; //Importar as funções dentro da controller pet
-import {postPets} from "../controllers/pet.js";
-import { putPets } from "../controllers/pet.js";
-import { deletePets } from "../controllers/pet.js";
+import {getPets, getPetID, postPet, deletePets, putPets} from "../controllers/pet.js"; //Importar as funções dentro da controller pet
 
 const router = express.Router()
 
@@ -12,10 +9,10 @@ router.get("/", getPets)  //listagem total
 
 router.get("/:id",getPetID) // listagem por ID
 
-// router.post("/") // criação
+router.post("/",postPet) // criação
 
 router.put("/:id", putPets) //atualização
 
-// router.delete("/:id") // exclusão
+router.delete("/:id",deletePets) // exclusão
 
 export default router
