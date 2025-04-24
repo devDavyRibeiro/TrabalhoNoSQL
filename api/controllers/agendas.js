@@ -33,21 +33,25 @@ export const getAgendaById = async (req, res) => {
   }
 };
 
-export async function createEstadia(req, res) {
+export async function PostEstadia(req, res) {
   try {
-    const db = req.app.locals.db; 
-    const { nome_cliente, cpf_tutor, nome_pet, data_entrada, hora_entrada, data_saida } = req.body;
+    const db = req.app.locals.db;
+    const { nome_cliente, cpf_tutor, nome_pet, data_entrada, data_saida, id_pet } = req.body;
 
-    if (!nome_cliente || !cpf_tutor || !nome_pet || !data_entrada) {
-      return res.status(400).json({ mensagem: "Campos obrigatórios faltando!" });
-    }
-    
+    const existePet = await db.collection('pet').find({_id: new ObjectId(id_pet)});
+        if(!existePet){
+            return res.status(404).json({
+                error: true,
+                message: "Pet not found"
+            })
+        }
+
     const novaEstadia = {
-      nomeCliente: nome_cliente,
-      cpfTutor: cpf_tutor,
-      nomePet: nome_pet,
-      dataEntrada: data_entrada,
-      dataSaida: data_saida || null,
+      nome_cliente,
+      cpf_tutor,
+      nome_pet,
+      data_entrada,
+      data_saida,
       created_at: new Date(),
       updated_at: new Date()
     };
@@ -61,4 +65,4 @@ export async function createEstadia(req, res) {
     console.error("Erro ao cadastrar estadia:", error);
     res.status(500).json({ mensagem: "Erro interno no servidor." });
   }
-    };
+};
