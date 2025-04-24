@@ -32,10 +32,10 @@ db.pet.find()
 use('hotelpet')
 db.estadia.insertOne({
     horario_entrada: new Date(),
-    horario_saida: null, //isso significa que o animal não saiu
+    horario_saida: new Date(), //isso significa que o animal não saiu
     pet: {
         _id: {
-            $oid: "68014f9a34b0168be07b585e"
+            $oid: "680a99407c66932cae04f79f"
           },
     }
 })
@@ -43,4 +43,6 @@ db.estadia.insertOne({
 use('hotelpet')
 db.estadia.find()
 
+use('hotelpet')
+db.cliente.findOne({cpfCliente:'47251787806'})
 

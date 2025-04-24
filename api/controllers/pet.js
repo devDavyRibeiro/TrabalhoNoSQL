@@ -35,13 +35,15 @@ export const postPet = async(req,res)=>{
         const db = req.app.locals.db;
         const {nome,especie,raca,datanasc,sexo,porte,observacoes,peso,cpfCliente} = req.body;
 
-        const existTutor = await db.collection('cliente').find({cpfCliente: cpfCliente});
+        const existTutor = await db.collection('cliente').findOne({cpf:cpfCliente});
+       
         if(!existTutor){
-            return res.status(400).json({
+            return res.status(404).json({
                 error: true,
-                message: "Tutor not found"
+                message: "Tutor não encontrado"
             })
         }
+        
         const newPet ={
             nome,
             especie,
@@ -100,7 +102,7 @@ export const deletePets = async (req, res) => {
     const id = req.params.id;
 
     try {
-        const resultado = await db.collection('pet').deleteOne({ id: id });
+        const resultado = await db.collection('pet').deleteOne({ _id: new ObjectId(id) });
 
         if (resultado.deletedCount === 0) {
             return res.status(404).json({ mensagem: 'Pet não encontrado.' });
