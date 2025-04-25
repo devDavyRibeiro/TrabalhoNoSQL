@@ -31,8 +31,9 @@ db.pet.find()
 
 use('hotelpet')
 db.estadia.insertOne({
-    horario_entrada: new Date(),
-    horario_saida: null, //isso significa que o animal não saiu
+    cpf_tutor: "48524893869",
+    data_entrada: new Date("9-12-2000"),
+    data_saida: new Date("10-12-2000"), //isso significa que o animal não saiu
     pet: {
         _id: {
             $oid: "68014f9a34b0168be07b585e"
@@ -40,7 +41,15 @@ db.estadia.insertOne({
     }
 })
 
+const dataAtual = new Date()
 use('hotelpet')
-db.estadia.find()
+db.estadia.find({
+    $or: [
+        {
+          data_entrada: { $gte: dataAtual},
+          data_saida: { $lte: dataAtual }
+        },
+    ]
+})
 
 
