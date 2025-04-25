@@ -4,8 +4,9 @@ export const getPets = async (req, res) => {
     try {
         const db = req.app.locals.db; // guardando o banco na variavel db. Todas as operações do banco vão ser usadas atráves de db
 
+        const cpfCliente = req.params.cpf
         const pets = await db.collection('pet') // collection que estou procurando
-        .find({}) // procurando por todos
+        .find({cpfCliente}) // procurando por todos
         .toArray(); // transformando tudo em um Array
         res.status(200).json(pets); // dando o resultado em forma de JSON e dando status 200   
     } catch (error) {
@@ -33,22 +34,23 @@ export const getPetID = async (req,res)=>{
 export const postPet = async(req,res)=>{
     try {
         const db = req.app.locals.db;
-        const {nome,especie,raca,datanasc,sexo,porte,observacoes,peso,cpfCliente} = req.body;
+        const {nomePet,especie,raca,dataNascimento,sexo,porte,observacoes,peso,cpfCliente,nomeTutor} = req.body;
 
         const existTutor = await db.collection('cliente').findOne({cpf:cpfCliente});
        
-        if(!existTutor){
-            return res.status(404).json({
-                error: true,
-                message: "Tutor não encontrado"
-            })
-        }
+         if(!existTutor){
+          const newTutor ={
+            cpf: cpfCliente,
+            nomeTutor,
+          }
+          await db.collection("client").insertOne(newTutor)
+     }
         
         const newPet ={
-            nome,
+            nomePet,
             especie,
             raca,
-            datanasc,
+            dataNascimento,
             sexo,
             porte,
             observacoes,
@@ -57,6 +59,7 @@ export const postPet = async(req,res)=>{
             created_at: new Date(),
             updated_at : new Date(),
         }
+
         
         await db.collection('pet').insertOne(newPet);
 
