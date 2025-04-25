@@ -26,13 +26,23 @@ document
         },
         body: JSON.stringify(data),
       });
-
+      
+      let pet = await response.json();
       if (response.ok) {
         alert("Pet cadastrado com sucesso!");
-        let pet = await response.json();
-        console.log(pet);
+
       } else {
-        alert("Erro ao cadastrar o pet. Verifique os dados e tente novamente.");
+        if(response.status === 400){
+          let erros = pet.errors;
+          erros.forEach(erro => {
+            alert(erro.msg);
+          });
+          
+        }
+        else if(response.status === 404){
+          alert(pet.message);
+        }
+
       }
     } catch (error) {
       console.error("Erro na requisição:", error);

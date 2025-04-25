@@ -10,7 +10,7 @@ export const getPets = async (req, res) => {
         res.status(200).json(pets); // dando o resultado em forma de JSON e dando status 200   
     } catch (error) {
         console.error("Error fetching pet:", error)
-        res.status(500).json({ error: true, message: "Failed to fetch pet" })
+        res.status(500).json({ error: true, message: 'Falha ao tentar encontrar Pet' })
     }
 
 }
@@ -40,7 +40,7 @@ export const postPet = async(req,res)=>{
         if(!existTutor){
             return res.status(404).json({
                 error: true,
-                message: "Tutor não encontrado"
+                message: "Tutor não encontrado."
             })
         }
         
@@ -64,7 +64,7 @@ export const postPet = async(req,res)=>{
 
     } catch (error) {
         console.error("Error creating pet:", error)
-        res.status(500).json({ error: true, message: "Failed to create pet" })
+        res.status(500).json({ error: true, message: "Falha ao criar Pet" })
     }
 }
 
