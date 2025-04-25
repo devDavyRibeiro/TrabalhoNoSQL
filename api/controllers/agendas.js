@@ -4,15 +4,34 @@ export const getAgendas = async (req, res) => {
   const db = req.app.locals.db;
 
   try {
-    const agendas = await db.collection('estadia')
-      .find({})
-      .toArray();
+    const { cpf_tutor, data_entrada, data_saida } = req.query;
 
-    res.status(200).json(agendas);
-  } catch (error) {
-    console.error('Erro ao buscar agendas:', error);
-    res.status(500).json({ mensagem: 'Erro ao buscar agendas.' });
-  }
+    if (!cpf_tutor && (!data_entrada || !data_saida)) {
+      return res.status(400).json({ mensagem: 'Informe o CPF ou o intervalo de datas para consulta.' });
+    }
+
+    const filtros = [];
+
+    if (data_entrada && data_saida) {
+      filtros.push({
+        data_entrada: { $gte: new Date(data_entrada) },
+        data_saida: { $lte: new Date(data_saida) }
+      });
+    }
+    if (cpf_tutor) {
+      filtros.push({ cpf_tutor });
+    }
+
+    const agendas = await db.collection('estadia')
+    .find({ $or: filtros })
+    .toArray();
+
+  res.status(200).json(agendas);
+
+} catch (error) {
+  console.error('Erro ao buscar agendas:', error.message, error.stack);
+  res.status(500).json({ mensagem: 'Erro ao buscar agendas.' });
+}
 };
 
 export const getAgendaById = async (req, res) => {
