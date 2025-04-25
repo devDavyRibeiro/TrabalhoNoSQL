@@ -31,12 +31,14 @@ db.pet.find()
 
 use('hotelpet')
 db.estadia.insertOne({
-    cpf_tutor: "48524893869",
+     //isso significa que o animal não saiu
+     cpf_tutor: "48524893869",
     data_entrada: new Date("9-12-2000"),
-    data_saida: new Date("10-12-2000"), //isso significa que o animal não saiu
+    data_saida: new Date("10-12-2000"),
+
     pet: {
         _id: {
-            $oid: "68014f9a34b0168be07b585e"
+            $oid: "680a99407c66932cae04f79f"
           },
     }
 })
@@ -52,4 +54,6 @@ db.estadia.find({
     ]
 })
 
+use('hotelpet')
+db.cliente.findOne({cpfCliente:'47251787806'})
 
