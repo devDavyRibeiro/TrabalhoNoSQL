@@ -108,3 +108,22 @@ export const putEstadia = async (req, res) => {
   res.status(200).json({ mensagem: 'Estadia atualizada com sucesso!' });
 };
 
+//DELETE ESTADIA
+export const deleteEstadia = async (req, res) => {
+  const db = req.app.locals.db;
+  const id = req.params.id;
+
+  try {
+    const result = await db.collection('estadia').deleteOne({ _id: new ObjectId(id) });
+    
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ mensagem: 'Estadia não encontrada.' });
+    }
+
+    res.status(200).json({ mensagem: 'Estadia deletada com sucesso!' });
+  } catch (error) {
+    console.error('Erro ao deletar estadia:', error);
+    res.status(500).json({ mensagem: 'Erro interno ao deletar estadia.' });
+  }
+};
+
