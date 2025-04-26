@@ -30,14 +30,14 @@ async function listarPets() {
             const linha = document.createElement('tr');
 
             linha.innerHTML = `
-                <td>${pet.nomePet || '-'}</td>
+                <td>${pet.nome || '-'}</td>
                 <td>${pet.especie || '-'}</td>
                 <td>${pet.raca || '-'}</td>
                 <td>${pet.sexo || '-'}</td>
-                <td>${pet.dataNascimento ? new Date(pet.dataNascimento).toLocaleDateString() : '-'}</td>
+                <td>${pet.idade ? `${pet.idade} anos` : '-'}</td>
                 <td>${pet.porte || '-'}</td>
                 
-                <td>${pet.nomeTutor || '-'}</td>
+                <td>${pet.nome_tutor || '-'}</td>
                 <td>${pet.cpfCliente || '-'}</td>
                 <td>${pet.peso || '-'}</td>
                 <td>

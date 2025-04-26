@@ -4,25 +4,26 @@ export const getPets = async (req, res) => {
   try {
     const filtros = req.query;
 
-    const db = req.app.locals.db; // guardando o banco na variavel db. Todas as operações do banco vão ser usadas atráves de db
+    const db = req.app.locals.db;
 
     const query = {};
 
-    if (filtros.cpf_tutor) query.cpfCliente = filtros.cpf_tutor;
+    if (filtros.cpfCliente) query.cpfCliente = filtros.cpfCliente;
     if (filtros.especie) query.especie = filtros.especie;
     if (filtros.porte) query.porte = filtros.porte;
 
-    if (filtros.idade_min || filtros.idade_max) {
+    if (filtros.idadeMinima || filtros.idadeMaxima) {
       query.idade = {};
-      if (filtros.idade_min) query.idade.$gte = parseInt(filtros.idade_min);
-      if (filtros.idade_max) query.idade.$lte = parseInt(filtros.idade_max);
+      if (filtros.idadeMinima) query.idade.$gte = parseInt(filtros.idadeMinima);
+      if (filtros.idadeMaxima) query.idade.$lte = parseInt(filtros.idadeMaxima);
     }
 
     const pets = await db
-      .collection("pet") // collection que estou procurando
-      .find(query) // procurando por todos
-      .toArray(); // transformando tudo em um Array
-    res.status(200).json(pets); // dando o resultado em forma de JSON e dando status 200
+      .collection("pet")
+      .find(query)
+      .toArray();
+      
+    res.status(200).json(pets);
   } catch (error) {
     console.error("Erro ao consultar pets:", error);
     res.status(500).json({ erro: "Erro ao buscar pets" });
