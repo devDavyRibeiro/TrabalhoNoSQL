@@ -7,7 +7,7 @@ document
 
     // Converte os dados do formulário em objeto
     const data = {
-      nomePet: formData.get("nome-pet"),
+      nome: formData.get("nome"),
       especie: formData.get("especie"),
       raca: formData.get("raca"),
       idade: parseInt(formData.get("idade")),

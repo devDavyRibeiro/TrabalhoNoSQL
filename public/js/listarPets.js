@@ -30,14 +30,14 @@ async function listarPets() {
             const linha = document.createElement('tr');
 
             linha.innerHTML = `
-                <td>${pet.nomePet || '-'}</td>
+                <td>${pet.nome || '-'}</td>
                 <td>${pet.especie || '-'}</td>
                 <td>${pet.raca || '-'}</td>
                 <td>${pet.sexo || '-'}</td>
-                <td>${pet.dataNascimento ? new Date(pet.dataNascimento).toLocaleDateString() : '-'}</td>
+                <td>${pet.idade ? `${pet.idade} anos` : '-'}</td>
                 <td>${pet.porte || '-'}</td>
                 
-                <td>${pet.nomeTutor || '-'}</td>
+                <td>${pet.nome_tutor || '-'}</td>
                 <td>${pet.cpfCliente || '-'}</td>
                 <td>${pet.peso || '-'}</td>
                 <td>
@@ -61,15 +61,15 @@ async function verDetalhes(id) {
 
         const detalhesDiv = document.getElementById('detalhesPet');
         detalhesDiv.innerHTML = `
-            <p><strong>Nome:</strong> ${pet.nomePet}</p>
+            <p><strong>Nome:</strong> ${pet.nome}</p>
             <p><strong>Espécie:</strong> ${pet.especie}</p>
             <p><strong>Raça:</strong> ${pet.raca}</p>
-            <p><strong>Data de Nascimento:</strong> ${new Date(pet.dataNascimento).toLocaleDateString()}</p>
+            <p><strong>Ano Nascimento:</strong> ${pet.idade}</p>
             <p><strong>Sexo:</strong> ${pet.sexo}</p>
             <p><strong>Porte:</strong> ${pet.porte}</p>
             <p><strong>Peso:</strong> ${pet.peso}</p>
             <p><strong>CPF do Tutor:</strong> ${pet.cpfCliente}</p>
-            <p><strong>Nome do Tutor:</strong> ${pet.nomeTutor}</p>
+            <p><strong>Nome do Tutor:</strong> ${pet.nome_tutor}</p>
             <p><strong>Observações:</strong> ${pet.observacoes}</p>
         `;
 

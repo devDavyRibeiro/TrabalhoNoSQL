@@ -15,28 +15,34 @@
           <li><a href="index.html">Página Inicial</a></li>
           <li><a href="cadastro.html">Cadastro de Pet</a></li>
           <li><a href="agendar.html">Reservar Hospedagem</a></li>
-          <li><a href="consultar.html">Consulta de Reservas</a></li>
-          <li><a href="atualizar.html">Atualizar/Remover Reserva</a></li>
+          <li><a href="consultaReserva.html">Consulta de Reservas</a></li>
           <li><a href="consultarPets.html">Consultar Pets</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
   <div class="container">
     <div>
       <h1>Cadastro de Pet e Tutor</h1>
       <form id="formulario">
-        <label for="nome-pet">Nome do Pet:</label>
-        <input type="text" id="nome-pet" name="nome-pet">
+        <label for="nome">Nome do Pet:</label>
+        <input type="text" id="nome" name="nome">
   
         <label for="especie">Espécie:</label>
-        <input type="text" id="especie" name="especie">
+        <select id="especie" name="especie">
+          <option value="">Selecione</option>
+          <option value="pequeno">Cachorro</option>
+          <option value="medio">Gato</option>
+          <option value="grande">Coelho</option>
+          <option value="grande">Hamster</option>
+          <option value="grande">Outro</option>
+        </select>
+        
   
         <label for="raca">Raça:</label>
         <input type="text" id="raca" name="raca">
   
-        <label for="idade">Idade do Pet:</label>
+        <label for="idade">Idade do Pet (Apenas número):</label>
         <input type="number" id="idade" name="idade" step="1">
   
         <label for="sexo">Sexo:</label>
@@ -60,7 +66,7 @@
         <label for="cpf">CPF do Tutor:</label>
         <input type="text" id="cpf" name="cpfCliente">
 
-        <label for="peso">Peso:</label>
+        <label for="peso">Peso (Kg):</label>
         <input type="number" id="peso" name="peso" step="1">
 
         <label for="observacoes">Observações:</label>
