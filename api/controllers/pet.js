@@ -55,28 +55,20 @@ export const getPetID = async (req,res)=>{
 export const postPet = async(req,res)=>{
     try {
         const db = req.app.locals.db;
-        const {nomePet,especie,raca,dataNascimento,sexo,porte,observacoes,peso,cpfCliente,nomeTutor} = req.body;
+        const {nomePet,especie,raca,idade,sexo,porte,observacoes,peso,cpfCliente,nome_tutor} = req.body;
 
-        const existTutor = await db.collection('cliente').findOne({cpf:cpfCliente});
-       
-         if(!existTutor){
-          const newTutor ={
-            cpf: cpfCliente,
-            nomeTutor,
-          }
-          await db.collection("client").insertOne(newTutor)
-     }
         
         const newPet ={
             nomePet,
             especie,
             raca,
-            dataNascimento,
+            idade,
             sexo,
             porte,
             observacoes,
             peso,
             cpfCliente,
+            nome_tutor,
             created_at: new Date(),
             updated_at : new Date(),
         }
@@ -95,17 +87,18 @@ export const postPet = async(req,res)=>{
 export const putPets = async (req, res) => {
     const db = req.app.locals.db;
     const id = req.params.id; // pegando o ID
-    const {nome, especie, raca, datanasc, sexo, porte, observacoes, peso, cpfCliente} = req.body;
+    const {nome, especie, raca, idade, sexo, porte, observacoes, peso, cpfCliente,nome_tutor} = req.body;
     const novosDadosPets ={
         nome,
         especie,
         raca,
-        datanasc,
+        idade,
         sexo,
         porte,
         observacoes,
         peso,
         cpfCliente,
+        nome_tutor,
         updated_at : new Date(),
     }
     
