@@ -51,7 +51,7 @@ export const postPet = async (req, res) => {
   try {
     const db = req.app.locals.db;
     const {
-      nomePet,
+      nome,
       especie,
       raca,
       idade,
@@ -64,7 +64,7 @@ export const postPet = async (req, res) => {
     } = req.body;
 
     const newPet = {
-      nomePet,
+      nome,
       especie,
       raca,
       idade,

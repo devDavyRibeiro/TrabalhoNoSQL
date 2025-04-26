@@ -16,8 +16,7 @@
           <li><a href="index.html">Página Inicial</a></li>
           <li><a href="cadastro.html">Cadastro de Pet</a></li>
           <li><a href="agendar.html">Reservar Hospedagem</a></li>
-          <li><a href="consultar.html">Consulta de Reservas</a></li>
-          <li><a href="atualizar.html">Atualizar/Remover Reserva</a></li>
+          <li><a href="consultaReserva.html">Consulta de Reservas</a></li>
           <li><a href="consultarPets.html">Consultar Pets</a></li>
         </ul>
       </nav>
@@ -32,8 +31,8 @@
     <div class="filtros">
         <input type="text" id="cpfCliente" placeholder="CPF do Tutor">
         <input type="text" id="especie" placeholder="Espécie">
-        <input type="number" id="idadeMinima" placeholder="Idade Mínima">
-        <input type="number" id="idadeMaxima" placeholder="Idade Máxima">
+        <input type="number" id="idadeMinima" placeholder="Idade Mínima(números)">
+        <input type="number" id="idadeMaxima" placeholder="Idade Máxima(números)">
         <input type="text" id="porte" placeholder="Porte">
         <button onclick="listarPets()">Buscar</button>
     </div>
@@ -46,11 +45,11 @@
                 <th>Espécie</th>
                 <th>Raça</th>
                 <th>Sexo</th>
-                <th>Ano de Nascimento</th>
+                <th>Idade(anos)</th>
                 <th>Porte</th>
                 <th>Nome do Tutor</th>
                 <th>CPF do Tutor</th>
-                <th>Peso</th>
+                <th>Peso(Kg)</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -71,6 +70,6 @@
     </div>
   </div>
 
-    <script src="/js/listar-pets.js"></script> <!-- Puxa seu JS -->
+    <script src="/js/listarPets.js"></script> <!-- Puxa seu JS -->
 </body>
 </html>
