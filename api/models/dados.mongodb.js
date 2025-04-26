@@ -63,3 +63,6 @@ use('hotelpet')
 db.estadia.find({pet:{
     _id: '680c58dfd40b99dd247a9e6f'
 }})
+
+use('hotelpet')
+db.pet.find({})
