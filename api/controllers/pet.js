@@ -6,7 +6,7 @@ export const getPets = async (req, res) => {
 
         const cpfCliente = req.params.cpf
         const pets = await db.collection('pet') // collection que estou procurando
-        .find({cpfCliente}) // procurando por todos
+        .find({}) // procurando por todos
         .toArray(); // transformando tudo em um Array
         res.status(200).json(pets); // dando o resultado em forma de JSON e dando status 200   
     } catch (error) {
