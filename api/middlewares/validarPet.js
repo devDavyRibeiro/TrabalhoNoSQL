@@ -14,7 +14,7 @@ export const validateRequest = (req, res, next) => {
 };
 
 export const validatePet = [
-  check("nomePet")
+  check("nome")
     .notEmpty()
     .withMessage("O nome do pet é obrigatório")
     .isLength({ max: 50 })
@@ -31,7 +31,7 @@ export const validatePet = [
   check("sexo")
     .notEmpty()
     .withMessage("O sexo é obrigatório")
-    .isIn(["macho", "femea"])
+    .isIn(["macho", "fêmea"])
     .withMessage("Sexo deve ser 'Macho' ou 'Fêmea'"),
 
   check("porte")
@@ -39,13 +39,26 @@ export const validatePet = [
     .withMessage("O porte é obrigatório")
     .isIn(["pequeno", "medio", "grande"])
     .withMessage("Porte deve ser 'Pequeno', 'Médio' ou 'Grande'"),
+    
+  check("idade")
+    .notEmpty()
+    .withMessage("A idade é obrigatória")
+    .isInt()
+    .withMessage("Tem que ser valor numérico"),
+  
+    check("nome_tutor")
+    .notEmpty()
+    .withMessage("O nome do Tutor é obrigatório")
+    .isLength({ max: 50 })
+    .withMessage("O nome do Tutor deve ter no máximo 50 caracteres"),
+
+  check("cpfCliente")
+    .notEmpty()
+    .withMessage("CPF é obrigatório")
+    .isLength({min:11,max:11})
+    .withMessage("Deve ter 11 dígitos"),
 
   // Data de nascimento e observações são opcionais
-  check("dataNascimento")
-    .optional()
-    .isISO8601()
-    .withMessage("A data de nascimento deve ser uma data válida"),
-
   check("observacoes")
     .optional()
     .isLength({ max: 500 })

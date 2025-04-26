@@ -1,59 +1,68 @@
 use('hotelpet')
+db.pet.insertMany([
+    {
+        nome : "Bob",
+        especie : "cachorro",
+        raca : "Lhasa apso",
+        idade : 14,
+        sexo:  "Macho",
+        porte : "pequeno",
+        observacoes: "Ele está véio",
+        peso: 9.0,
+        cpfCliente : '47251787806',
+        nome_tutor: "Dafny Ribeiro",
+        created_at: new Date() ,
+        updated_at : new Date() ,
+    },
+    {    
+        nome : "Laika",
+        especie : "cachorro",
+        raca : "Moltes",
+        idade : 10,
+        sexo:  "Femea",
+        porte : "pequeno",
+        observacoes: "Ela está no espaço",
+        peso: 9.0,
+        created_at: new Date() ,
+        updated_at : new Date() ,
+        cpfCliente : '07535348009',
+        nome_tutor: "Rodrigo Ribeiro"
+    },
+    {    
+        nome : "Menina",
+        especie : "gato",
+        raca : "persa",
+        idade : 2,
+        sexo:  "Femea",
+        porte : "pequeno",
+        observacoes: "Não tem nome porque é de rua",
+        peso: 9.0,
+        created_at: new Date() ,
+        updated_at : new Date() ,
+        cpfCliente : '07535348009',
+        nome_tutor: "Rodrigo Ribeiro"
+    },
+    ]
+)
 
-db.cliente.insertOne({
-    nome_tutor: "Dafny Ribeiro",
-    cpf:"47251787806",
-    created_at: new Date() ,
-    updated_at : new Date() 
-})
 
 use('hotelpet')
-db.cliente.find({})
-
-use('hotelpet')
-db.pet.insertOne({
-    nome : "Bob",
-    especie : "cachorro",
-    raca : "Lhasa apso",
-    datanasc :"10/03/2011",
-    sexo:  "M",
-    porte : "pequeno",
-    observacoes: "Ele está véio",
-    peso: 9.0,
-    created_at: new Date() ,
-    updated_at : new Date() ,
-    cpfCliente : '47251787806' 
-})
-
-use('hotelpet')
-db.pet.find()
-
+db.pet.find({})
 
 use('hotelpet')
 db.estadia.insertOne({
-     //isso significa que o animal não saiu
-     cpf_tutor: "48524893869",
-    data_entrada: new Date("9-12-2000"),
-    data_saida: new Date("10-12-2000"),
+    data_entrada: new Date("2000-04-29"),
+    data_saida: new Date("2014-04-29"),
 
     pet: {
-        _id: {
-            $oid: "680a99407c66932cae04f79f"
-          },
+        _id: '680c58dfd40b99dd247a9e6f'
     }
 })
 
-const dataAtual = new Date()
 use('hotelpet')
-db.estadia.find({
-    $or: [
-        {
-          data_entrada: { $gte: dataAtual},
-          data_saida: { $lte: dataAtual }
-        },
-    ]
-})
+db.estadia.find({pet:{
+    _id: '680c58dfd40b99dd247a9e6f'
+}})
 
 use('hotelpet')
-db.cliente.findOne({cpfCliente:'47251787806'})
-
+db.pet.find({})
