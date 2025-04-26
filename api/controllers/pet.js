@@ -2,19 +2,40 @@ import { ObjectId } from "mongodb";
 
 export const getPets = async (req, res) => {
     try {
+        const filtros = req.query;
+       
+   
         const db = req.app.locals.db; // guardando o banco na variavel db. Todas as operações do banco vão ser usadas atráves de db
+ 
+        const query = {};
+ 
+        if (filtros.cpf_tutor)
+            query.cpfCliente = filtros.cpf_tutor;
+        if (filtros.especie)
+            query.especie = filtros.especie;
+        if (filtros.porte)
+            query.porte = filtros.porte;
+   
 
-        const cpfCliente = req.params.cpf
+        if (filtros.idade_min || filtros.idade_max) {
+         query.idade = {};
+        if (filtros.idade_min) 
+            query.idade.$gte = parseInt(filtros.idade_min);
+        if (filtros.idade_max) 
+            query.idade.$lte = parseInt(filtros.idade_max);
+        }
+ 
         const pets = await db.collection('pet') // collection que estou procurando
-        .find({}) // procurando por todos
+        .find(query) // procurando por todos
         .toArray(); // transformando tudo em um Array
-        res.status(200).json(pets); // dando o resultado em forma de JSON e dando status 200   
+        res.status(200).json(pets); // dando o resultado em forma de JSON e dando status 200
+ 
     } catch (error) {
-        console.error("Error fetching pet:", error)
-        res.status(500).json({ error: true, message: "Failed to fetch pet" })
+        console.error('Erro ao consultar pets:', error);
+        res.status(500).json({ erro: 'Erro ao buscar pets' });
+      }
     }
-
-}
+ 
 export const getPetID = async (req,res)=>{
     try {
         const db = req.app.locals.db;
