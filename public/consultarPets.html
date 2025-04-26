@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultar Pets</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Seu CSS aqui -->
+
+
+</head>
+<body>
+  <header>
+    <div class="header-container">
+        <img src="/img/pet-hotel_10753981 (1).png" alt="Logo">
+      <nav>
+        <ul>
+          <li><a href="index.html">Página Inicial</a></li>
+          <li><a href="cadastro.html">Cadastro de Pet</a></li>
+          <li><a href="agendar.html">Reservar Hospedagem</a></li>
+          <li><a href="consultar.html">Consulta de Reservas</a></li>
+          <li><a href="atualizar.html">Atualizar/Remover Reserva</a></li>
+          <li><a href="consultarPets.html">Consultar Pets</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="containerPet">
+
+    <h1>Consultar Pets</h1>
+
+    <!-- Filtros -->
+    <div class="filtros">
+        <input type="text" id="cpfCliente" placeholder="CPF do Tutor">
+        <input type="text" id="especie" placeholder="Espécie">
+        <input type="number" id="idadeMinima" placeholder="Idade Mínima">
+        <input type="number" id="idadeMaxima" placeholder="Idade Máxima">
+        <input type="text" id="porte" placeholder="Porte">
+        <button onclick="listarPets()">Buscar</button>
+    </div>
+
+    <!-- Tabela -->
+    <table id="tabelaPets">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Espécie</th>
+                <th>Raça</th>
+                <th>Sexo</th>
+                <th>Ano de Nascimento</th>
+                <th>Porte</th>
+                <th>Nome do Tutor</th>
+                <th>CPF do Tutor</th>
+                <th>Peso</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabela">
+            <!-- pets serão inseridos aqui -->
+        </tbody>
+    </table>
+
+    <!-- Modal de detalhes -->
+    <div id="modalDetalhes" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="fechar" onclick="fecharModal()">&times;</span>
+            <h2>Detalhes do Pet</h2>
+            <div id="detalhesPet">
+                <!-- Detalhes carregados via JS -->
+            </div>
+        </div>
+    </div>
+  </div>
+
+    <script src="/js/listar-pets.js"></script> <!-- Puxa seu JS -->
+</body>
+</html>
