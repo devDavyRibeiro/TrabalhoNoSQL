@@ -90,7 +90,6 @@ function editarPet(id) {
 function excluirPet(id) {
     if (confirm('Tem certeza que deseja excluir o pet?')) {
         fetch(`/pets/${id}`, {
-
             method: 'DELETE'
         }).then(response => {
             if (response.ok) {

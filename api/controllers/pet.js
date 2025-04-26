@@ -137,15 +137,22 @@ export const deletePets = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const resultado = await db
+    const existPet = db
       .collection("pet")
-      .deleteOne({ _id: new ObjectId(id) });
-
-    if (resultado.deletedCount === 0) {
+      .findOne({ _id: new ObjectId(id) }).count;
+    if (existPet === 0) {
       return res.status(404).json({ mensagem: "Pet não encontrado." });
     }
 
+     await db.collection("estadia").deleteMany({
+      pet: {
+        _id: id,
+      },
+    });
+     await db.collection("pet").deleteOne({ _id: new ObjectId(id) });
+
     res.status(200).json({ mensagem: "Pet deletado com sucesso!" });
+
   } catch (erro) {
     res.status(500).json({ mensagem: "Erro ao deletar o pet.", erro });
   }
