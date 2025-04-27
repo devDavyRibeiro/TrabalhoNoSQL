@@ -131,7 +131,7 @@ async function atualizarPet(event) {
     const id = document.getElementById('id').value || new URLSearchParams(window.location.search).get('id');
 
     // Captura todos os dados do formulário
-    const novosDadosPets = Array.from(document.querySelectorAll('#formEditarPet input, #formEditarPet select'))
+    const novosDadosPets = Array.from(document.querySelectorAll('#formEditarPet input, #formEditarPet select, #formEditarPet textarea'))
         .reduce((acc, input) => {
             acc[input.id] = input.value || (input.type === 'number' ? 0 : '');
             return acc;
@@ -150,7 +150,10 @@ async function atualizarPet(event) {
             alert('Pet atualizado com sucesso!');
             window.location.href = '/consultarPets.html';
         } else {
-            alert('Erro ao atualizar pet.');
+            dados = await response.json();
+            dados.errors.forEach((erro)=>{
+                alert(erro.msg);
+            })
         }
     } catch (error) {
         console.error('Erro ao atualizar pet:', error);
