@@ -54,29 +54,6 @@
 
 <script>
 
-const horariosDisponiveis = [
-    "08:00","08:30", "09:00","09:30", "10:00","10:30", "11:00",
-    "13:00", "14:30","08:00", "15:00","15:30", "16:00","17:00","18:00"
-  ];
 
-  // Simulando horários já agendados
-  const horariosIndisponiveis = ["10:00", "14:00","16:00","18:00"];
-
-  const selectHora = document.getElementById("hora_entrada");
-
-  horariosDisponiveis.forEach(hora => {
-    const option = document.createElement("option");
-    option.value = hora;
-    option.textContent = horariosIndisponiveis.includes(hora)
-      ? `${hora} - Indisponível`
-      : hora;
-
-    if (horariosIndisponiveis.includes(hora)) {
-      option.disabled = true;
-      option.style.color = "#999";
-    }
-
-    selectHora.appendChild(option);
-  });
 </script>
 </html>

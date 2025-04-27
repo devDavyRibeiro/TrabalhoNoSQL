@@ -1,14 +1,19 @@
 import { ObjectId } from "mongodb";
 
+
 export const getPets = async (req, res) => {
   try {
     const filtros = req.query;
-
     const db = req.app.locals.db; 
 
     const query = {};
 
-    if (filtros.cpfCliente) query.cpfCliente = filtros.cpfCliente;
+    // Se o filtro de CPF for passado, removemos pontuação antes de consultar no banco
+    if (filtros.cpfCliente) {
+      const cpfFormatado = formatarCPF(filtros.cpfCliente);
+      query.cpfCliente = cpfFormatado;  // Faz a busca no banco com CPF SEM pontuação
+    }
+
     if (filtros.nome) query.nome = filtros.nome;
 
     if (filtros.especie) {
@@ -25,7 +30,7 @@ export const getPets = async (req, res) => {
       if (filtros.idade_max) query.idade.$lte = parseInt(filtros.idade_max);
     }
 
-    
+    // Realiza a consulta com os filtros aplicados
     const pets = await db
       .collection("pet")
       .find(query)
@@ -38,6 +43,7 @@ export const getPets = async (req, res) => {
     res.status(500).json({ erro: "Erro ao buscar pets" });
   }
 };
+
 
 
 export const getPetID = async (req, res) => {
@@ -58,6 +64,11 @@ export const getPetID = async (req, res) => {
   }
 };
 
+// Função para formatar CPF (remover qualquer pontuação)
+function formatarCPF(cpf) {
+  return cpf.replace(/\D/g, "");  // Remove todos os caracteres não numéricos
+}
+
 export const postPet = async (req, res) => {
   try {
     const db = req.app.locals.db;
@@ -74,6 +85,9 @@ export const postPet = async (req, res) => {
       nome_tutor,
     } = req.body;
 
+    // Formata o CPF para remover qualquer pontuação antes de salvar no banco
+    const cpfClienteSemPontuacao = formatarCPF(cpfCliente);
+
     const newPet = {
       nome,
       especie,
@@ -83,7 +97,7 @@ export const postPet = async (req, res) => {
       porte,
       observacoes,
       peso,
-      cpfCliente,
+      cpfCliente: cpfClienteSemPontuacao, // CPF salvo SEM pontuação
       nome_tutor,
       created_at: new Date(),
       updated_at: new Date(),
@@ -97,6 +111,7 @@ export const postPet = async (req, res) => {
     res.status(500).json({ error: true, message: "Failed to create pet" });
   }
 };
+
 
 export const putPets = async (req, res) => {
   try {
