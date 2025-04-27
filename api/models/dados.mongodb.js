@@ -1,4 +1,4 @@
-use('hotelpet')
+use('banco')
 db.pet.insertMany([
     {
         nome : "Bob",
@@ -46,10 +46,10 @@ db.pet.insertMany([
 )
 
 
-use('hotelpet')
+use('banco')
 db.pet.find({})
 
-use('hotelpet')
+use('banco')
 db.estadia.insertOne({
     data_entrada: new Date("2000-04-29"),
     data_saida: new Date("2014-04-29"),
@@ -59,36 +59,36 @@ db.estadia.insertOne({
     }
 })
 
-use('hotelpet')
+use('banco')
 db.estadia.find({pet:{
     _id: '680c58dfd40b99dd247a9e6f'
 }})
 
-use('hotelpet')
+use('banco')
 db.pet.find({})
 
 
-use('hotelpet')
+use('banco')
 const dados=[
     {
       "data_entrada": "2025-05-01T08:00:00.000Z",
       "data_saida": "2025-05-03T08:00:00.000Z",
       "pet": {
-        "_id": "680d467e8f29bd74a01e51d2"
+        "_id": "680e78e7e3fef722e2d5f926"
       }
     },
     {
       "data_entrada": "2025-05-04T10:00:00.000Z",
       "data_saida": "2025-05-07T10:00:00.000Z",
       "pet": {
-        "_id": "680d467e8f29bd74a01e51d3"
+        "_id": "680e78e7e3fef722e2d5f925"
       }
     },
     {
       "data_entrada": "2025-05-08T12:00:00.000Z",
       "data_saida": "2025-05-10T12:00:00.000Z",
       "pet": {
-        "_id": "680d467e8f29bd74a01e51d4"
+        "_id": "680e78e7e3fef722e2d5f927"
       }
     }
   ]
@@ -96,44 +96,44 @@ const dados=[
     
 db.estadia.insertMany(dados)
 
-use('hotelpet')
+use('banco')
 db.estadia.find({})
 
-use('hotelpet')
+use('banco')
 const novosDadosAgenda = [
     {
       "data_entrada": "2025-05-12T09:00:00.000Z",
       "data_saida": "2025-05-15T09:00:00.000Z",
       "pet": {
-        "_id": "680d467e8f29bd74a01e51d3"
+        "_id": "680e78e7e3fef722e2d5f927"
       }
     },
     {
       "data_entrada": "2025-05-18T10:30:00.000Z",
       "data_saida": "2025-05-22T10:30:00.000Z",
       "pet": {
-        "_id": "680d467e8f29bd74a01e51d3"
+        "_id": "680e78e7e3fef722e2d5f927"
       }
     },
     {
       "data_entrada": "2025-05-25T08:00:00.000Z",
       "data_saida": "2025-05-30T08:00:00.000Z",
       "pet": {
-        "_id": "680d467e8f29bd74a01e51d3"
+        "_id": "680e78e7e3fef722e2d5f926"
       }
     },
     {
       "data_entrada": "2025-06-02T14:00:00.000Z",
       "data_saida": "2025-06-06T14:00:00.000Z",
       "pet": {
-        "_id": "680d467e8f29bd74a01e51d3"
+        "_id": "680e78e7e3fef722e2d5f925"
       }
     },
     {
       "data_entrada": "2025-06-10T11:00:00.000Z",
       "data_saida": "2025-06-14T11:00:00.000Z",
       "pet": {
-        "_id": "680d467e8f29bd74a01e51d3"
+        "_id": "680e78e7e3fef722e2d5f925"
       }
     }
   ]
@@ -141,10 +141,8 @@ const novosDadosAgenda = [
 
 db.estadia.insertMany(novosDadosAgenda)
 
-use('hotelpet')
-db.estadia.deleteMany(
-    {
-   
-    }
+use('banco')
+db.estadia.find({})
 
-)
+use('banco')
+db.pet.find({})
