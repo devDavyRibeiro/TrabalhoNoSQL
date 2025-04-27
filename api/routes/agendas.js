@@ -1,17 +1,19 @@
 import express from "express"
-import { getAgendaById, getAgendas,putEstadia,PostEstadia, deleteEstadia } from "../controllers/agendas.js";
+import { getAgendas2,putEstadia2,postEstadia2, deleteEstadia2} from "../controllers/agendas2.js";
+import { getAgendabyID2 } from "../controllers/agendas2.js";
+import { validateAgenda } from "../middlewares/validarEstadia.js";
 
 const router = express.Router();
 
-router.get("/", getAgendas) //listagem geral 
+router.get("/",getAgendas2) //listagem geral 
 
-router.get("/:id", getAgendaById) // listagem por ID
+router.get("/:id", getAgendabyID2) 
 
 //router.post("/") // criação
-router.post("/",PostEstadia)
+router.post("/",validateAgenda ,postEstadia2)
 
-router.put("/:id",putEstadia) //atualização
+router.put("/:id",validateAgenda ,putEstadia2) //atualização
 
-router.delete("/:id", deleteEstadia); // DELETE 
+router.delete("/:id", deleteEstadia2); // DELETE 
 
 export default router;
