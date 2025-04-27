@@ -1,0 +1,104 @@
+// Instale a extensão REST Client para efetuar os testes
+// Teste da API REST de Pets, Clientes e Estadia
+
+@basePetURL = http://localhost:3000/pets
+@baseAgendaURL = http://localhost:3000/agendas
+@idPet = 680e782478d4b003262dedaf
+@idEstadia = 680e776178d4b003262dedae
+
+###
+// GET - Lista todos os pets com filtros
+GET {{basePetURL}}?cpfCliente=47192768812&especie=cachorro&porte=medio&idade_min=2&idade_max=8
+Content-Type: application/json
+
+###
+// GET - Busca pet pelo ID
+GET {{basePetURL}}/{{idPet}}
+Content-Type: application/json
+
+###
+// POST - Cadastra novo pet
+POST {{basePetURL}}
+Content-Type: application/json
+
+{
+  "nome": "Pandora",
+  "especie": "Cachorro",
+  "raca": "Border Collie",
+  "idade": 5,
+  "sexo": "femea",
+  "porte": "medio",
+  "observacoes": "Muito brincalhona",
+  "peso": 15,
+  "cpfCliente": "47192768812",
+  "nome_tutor": "Vanessa Capuano e Vitor Ruan"
+}
+
+###
+// PUT - Atualiza dados de um pet
+PUT {{basePetURL}}/{{idPet}}
+Content-Type: application/json
+
+{
+  "nome": "Pandora",
+  "especie": "Cachorro",
+  "raca": "Vira-lata",
+  "idade": 8,
+  "sexo": "Macho",
+  "porte": "medio",
+  "observacoes": "Adora água",
+  "peso": 8,
+  "cpfCliente": "12345678900",
+  "nome_tutor": "Vanessa Capuano"
+}
+
+###
+// DELETE - Remove pet
+DELETE {{basePetURL}}/{{idPet}}
+Content-Type: application/json
+
+
+###
+// GET - Lista estadias (filtrar por CPF)
+GET {{baseAgendaURL}}/?cpf_tutor=46601194832
+Content-Type: application/json
+
+###
+// GET - Lista estadias por intervalo de datas
+GET {{baseAgendaURL}}/?data_entrada=2025-04-05&data_saida=2025-04-30
+Content-Type: application/json
+
+###
+// GET - Buscar estadia pelo ID
+GET {{baseAgendaURL}}/{{idEstadia}}
+Content-Type: application/json
+
+###
+// POST - Cadastrar nova estadia
+POST {{baseAgendaURL}}
+Content-Type: application/json
+
+{
+  "cpf_tutor": "46601194832",
+  "nome_pet": "Koda",
+  "data_entrada": "2025-04-05",
+  "data_saida": "2025-04-30",
+  "id_pet": "680e69b455d8a81f7b5ee089"
+}
+
+###
+// PUT - Atualizar estadia
+PUT {{baseAgendaURL}}/{{idEstadia}}
+Content-Type: application/json
+
+{
+  "id_pet": "680e69b455d8a81f7b5ee089",
+  "nome_pet": "Pandora atualizado",
+  "data_entrada": "2025-04-28",
+  "data_saida": "2025-05-02"
+}
+
+###
+// DELETE - Remover estadia
+DELETE {{baseAgendaURL}}/{{idEstadia}}
+Content-Type: application/json
