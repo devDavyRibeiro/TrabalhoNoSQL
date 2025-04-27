@@ -39,7 +39,7 @@ export const getAgendaById = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const agenda = await db.collection('agenda').findOne({ _id: new ObjectId(id) });
+    const agenda = await db.collection('estadia').findOne({ _id: new ObjectId(id) });
 
     if (!agenda) {
       return res.status(404).json({ mensagem: 'Agenda não encontrada.' });
@@ -69,8 +69,8 @@ export async function PostEstadia(req, res) {
       
       cpf_tutor,
       nome_pet,
-      data_entrada,
-      data_saida,
+      data_entrada: new Date(data_entrada),
+      data_saida: new Date(data_saida),
       created_at: new Date(),
       updated_at: new Date()
     };
