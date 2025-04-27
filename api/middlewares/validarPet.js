@@ -31,7 +31,7 @@ export const validatePet = [
   check("sexo")
     .notEmpty()
     .withMessage("O sexo é obrigatório")
-    .isIn(["macho","fêmea"])
+    .isIn(["Macho","Fêmea"])
     .withMessage("Sexo deve ser 'Macho' ou 'Fêmea'"),
 
   check("porte")
@@ -49,15 +49,20 @@ export const validatePet = [
     check("nome_tutor")
     .notEmpty()
     .withMessage("O nome do Tutor é obrigatório")
-    .isLength({ max: 50 })
-    .withMessage("O nome do Tutor deve ter no máximo 50 caracteres"),
+    .isLength({ min: 6, max: 80 })
+    .withMessage("O nome do Tutor deve ter entre 6 e 80 caracteres"),
 
-  check("cpfCliente")
+    check("cpfCliente")
     .notEmpty()
     .withMessage("CPF é obrigatório")
-    .isLength({min:11,max:11})
-    .withMessage("Deve ter 11 dígitos"),
-
+    .bail()
+    .custom((value) => {
+      const cpfSemMascara = value.replace(/\D/g, ""); 
+      if (cpfSemMascara.length !== 11) {
+        throw new Error("CPF deve ter 11 dígitos");
+      }
+      return true;
+    }),
   // Data de nascimento e observações são opcionais
   check("observacoes")
     .optional()
