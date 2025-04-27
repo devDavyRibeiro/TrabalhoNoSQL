@@ -150,7 +150,10 @@ async function atualizarPet(event) {
             alert('Pet atualizado com sucesso!');
             window.location.href = '/consultarPets.html';
         } else {
-            alert('Erro ao atualizar pet.');
+            dados = await response.json();
+            dados.errors.forEach((erro)=>{
+                alert(erro.msg);
+            })
         }
     } catch (error) {
         console.error('Erro ao atualizar pet:', error);
