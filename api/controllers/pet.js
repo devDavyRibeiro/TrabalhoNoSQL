@@ -4,13 +4,20 @@ export const getPets = async (req, res) => {
   try {
     const filtros = req.query;
 
-    const db = req.app.locals.db; // guardando o banco na variavel db. Todas as operações do banco vão ser usadas atráves de db
+    const db = req.app.locals.db; 
 
     const query = {};
 
-    if (filtros.cpf_tutor) query.cpfCliente = filtros.cpf_tutor;
-    if (filtros.especie) query.especie = filtros.especie;
-    if (filtros.porte) query.porte = filtros.porte;
+    if (filtros.cpfCliente) query.cpfCliente = filtros.cpfCliente;
+    if (filtros.nome) query.nome = filtros.nome;
+
+    if (filtros.especie) {
+      query.especie = { $regex: `^${filtros.especie}$`, $options: 'i' };
+    }
+
+    if (filtros.porte) {
+      query.porte = { $regex: `^${filtros.porte}$`, $options: 'i' };
+    }
 
     if (filtros.idade_min || filtros.idade_max) {
       query.idade = {};
@@ -18,16 +25,20 @@ export const getPets = async (req, res) => {
       if (filtros.idade_max) query.idade.$lte = parseInt(filtros.idade_max);
     }
 
+    
     const pets = await db
-      .collection("pet") // collection que estou procurando
-      .find(query) // procurando por todos
-      .toArray(); // transformando tudo em um Array
-    res.status(200).json(pets); // dando o resultado em forma de JSON e dando status 200
+      .collection("pet")
+      .find(query)
+      .toArray();
+
+    res.status(200).json(pets);
+
   } catch (error) {
     console.error("Erro ao consultar pets:", error);
     res.status(500).json({ erro: "Erro ao buscar pets" });
   }
 };
+
 
 export const getPetID = async (req, res) => {
   try {
@@ -90,8 +101,9 @@ export const postPet = async (req, res) => {
 export const putPets = async (req, res) => {
   try {
     const db = req.app.locals.db;
-    const id = req.params.id; // pegando o ID
+    const id = req.params.id; 
     const {
+      
       nome,
       especie,
       raca,
@@ -104,6 +116,7 @@ export const putPets = async (req, res) => {
       nome_tutor,
     } = req.body;
     const novosDadosPets = {
+      id,
       nome,
       especie,
       raca,
@@ -121,9 +134,10 @@ export const putPets = async (req, res) => {
       { _id: new ObjectId(id) }, // procurando o pet pelo campo "id"
       { $set: novosDadosPets } // atualizando os dados
     );
-    if (result.updateCount === 0) {
-      return res.status(404).json({ mensagem: "Pet não encontrado." });
-    }
+    if (result.modifiedCount === 0) {
+      return res.status(404).json({ mensagem: "Pet não encontrado ou nada foi alterado." });
+  }
+  
     res.status(200).json({ mensagem: "Pet atualizado com sucesso!" });
   } catch (error) {
     console.error("Error creating pet:", error);
