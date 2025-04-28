@@ -7,15 +7,15 @@ import agendas2Router from './routes/agendas.js'
 
 const PORT = process.env.PORT;
 const app = express();
+const URL = process.env.URL;
 
 app.use(cors());
 app.use(express.json())
-app.use('/', express.static('public'))
+app.use(`${URL}/`, express.static('public'))
 
-app.use('/pets', petRouter)
-app.use('/agendas', agendaRouter);  // Agora o prefixo '/agenda' será usado para suas rotas
-app.use("/agendas2", agendas2Router);
 
+app.use(`${URL}/pets`, petRouter)
+app.use(`${URL}/agendas`, agendaRouter);  // Agora o prefixo '/agenda' será usado para suas rotas
 
 
 connectMongoDB(app).then(() => {

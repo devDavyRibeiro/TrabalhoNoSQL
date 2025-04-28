@@ -5,7 +5,7 @@ async function listarReservas() {
     const dataSaida = document.getElementById('data_saida').value.trim();
     
 
-    let url = 'http://localhost:3000/agendas2'; // ajuste se precisar
+    let url = 'https://trabalho-no-sql.vercel.app/agendas'; // ajuste se precisar
 
     
     const params = new URLSearchParams();
