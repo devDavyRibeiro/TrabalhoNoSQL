@@ -15,7 +15,7 @@ document
     };
 
     try {
-      const response = await fetch("https://trabalho-no-sql.vercel.app/agendas", {
+      const response = await fetch("https://trabalho-no-sql.vercel.app/api/agendas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

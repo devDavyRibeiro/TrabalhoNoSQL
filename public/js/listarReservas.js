@@ -5,7 +5,7 @@ async function listarReservas() {
     const dataSaida = document.getElementById('data_saida').value.trim();
     
 
-    let url = 'https://trabalho-no-sql.vercel.app/agendas'; // ajuste se precisar
+    let url = 'https://trabalho-no-sql.vercel.app/api/agendas'; // ajuste se precisar
 
     
     const params = new URLSearchParams();
@@ -50,7 +50,7 @@ async function listarReservas() {
 
 async function verDetalhes(id) {
     try {
-        const response = await fetch(`https://trabalho-no-sql.vercel.app//agendas/${id}`);
+        const response = await fetch(`https://trabalho-no-sql.vercel.app/api/agendas/${id}`);
 
         const reserva = await response.json();
 
@@ -88,7 +88,7 @@ async function carregarEditarAgenda() {
     if (!id) return alert('ID da agenda não encontrado!');
 
     try {
-        const response = await fetch(`https://trabalho-no-sql.vercel.app//agendas/${id}`);
+        const response = await fetch(`https://trabalho-no-sql.vercel.app/api/agendas/${id}`);
         
         console.log("Resposta da API:", response);  // Verifica se a requisição foi bem-sucedida
         
@@ -157,7 +157,7 @@ if (window.location.pathname.includes('editarAgenda.html')) {
 
 function excluirReserva(id) {
     if (confirm('Tem certeza que deseja excluir a Reserva?')) {
-        fetch(`https://trabalho-no-sql.vercel.app/agendas/${id}`, {
+        fetch(`https://trabalho-no-sql.vercel.app/api/agendas/${id}`, {
 
             method: 'DELETE'
         }).then(response => {
