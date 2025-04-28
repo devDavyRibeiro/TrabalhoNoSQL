@@ -6,6 +6,10 @@ Trabalho de Banco de Dados Não-Relacional sobre aplicação de uma API REST com
 
 Site de um hotel de pets, onde você pode cadastrar um pet e reservar uma estadia para ele
 
+## Link do site
+
+https://trabalho-no-sql.vercel.app/
+
 ## Integrantes:
 
 - Ariele Peres
@@ -20,14 +24,14 @@ Site de um hotel de pets, onde você pode cadastrar um pet e reservar uma estadi
 Pega todos os documentos da collection Pet 
 
 ``` 
-    .../pets/
+    https://trabalho-no-sql.vercel.app/pets/
 ```
 ### Get By Id
 
 Pega o documento pertencente ao ID mencionado 
 
 ``` 
-    .../pets/:id
+    https://trabalho-no-sql.vercel.app/pets/:id
 ```
 
 ### Post
@@ -35,7 +39,7 @@ Pega o documento pertencente ao ID mencionado
 Cria um novo documento de Pet
 
 ``` 
-    .../pets/
+    https://trabalho-no-sql.vercel.app/pets/
 ```
 
 ### Put
@@ -43,7 +47,7 @@ Cria um novo documento de Pet
 Atualiza um documento específico de Pet
 
 ``` 
-    .../pets/:id
+    https://trabalho-no-sql.vercel.app/pets/:id
 ```
 
 ### Delete
@@ -51,7 +55,7 @@ Atualiza um documento específico de Pet
 Excluí um documento específico de Pet e todos os documentos de Estadia relacionados
 
 ``` 
-    .../pets/:id
+    https://trabalho-no-sql.vercel.app/pets/:id
 ```
 
 ## Rotas de Estadia
@@ -61,14 +65,14 @@ Excluí um documento específico de Pet e todos os documentos de Estadia relacio
 Pega todos os documentos da collection Estadia 
 
 ``` 
-    .../agendas/
+    https://trabalho-no-sql.vercel.app/agendas/
 ```
 ### Get By Id
 
 Pega o documento pertencente ao ID mencionado 
 
 ``` 
-    .../agendas/:id
+    https://trabalho-no-sql.vercel.app/agendas/:id
 ```
 
 ### Post
@@ -76,7 +80,7 @@ Pega o documento pertencente ao ID mencionado
 Cria um novo documento de Estadia
 
 ``` 
-    .../agendas/
+    https://trabalho-no-sql.vercel.app/agendas/
 ```
 
 ### Put
@@ -84,7 +88,7 @@ Cria um novo documento de Estadia
 Atualiza um documento específico de Estadia
 
 ``` 
-    .../agendas/:id
+    https://trabalho-no-sql.vercel.app/agendas/:id
 ```
 
 ### Delete
@@ -92,7 +96,7 @@ Atualiza um documento específico de Estadia
 Excluí um documento específico de Estadia
 
 ``` 
-    .../agendas/:id
+    https://trabalho-no-sql.vercel.app/agendas/:id
 ```
 
 ## Comando
