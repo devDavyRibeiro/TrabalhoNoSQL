@@ -14,8 +14,8 @@ app.use(express.json())
 app.use(`${URL}/`, express.static('public'))
 
 
-app.use(`${URL}/pets`, petRouter)
-app.use(`${URL}/agendas`, agendaRouter);  // Agora o prefixo '/agenda' será usado para suas rotas
+app.use(`${URL}/api/pets`, petRouter)
+app.use(`${URL}/api/agendas`, agendaRouter);  // Agora o prefixo '/agenda' será usado para suas rotas
 
 
 connectMongoDB(app).then(() => {
