@@ -6,7 +6,7 @@ async function listarPets() {
     const idadeMaxima = document.getElementById('idadeMaxima').value.trim();
     const porte = document.getElementById('porte').value.trim();
 
-    let url = '/pets'; // ajuste se precisar
+    let url = 'https://trabalho-no-sql.vercel.app/pets'; // ajuste se precisar
 
     const params = new URLSearchParams();
 
@@ -58,7 +58,7 @@ async function listarPets() {
 
 async function verDetalhes(id) {
     try {
-        const response = await fetch(`/pets/${id}`);
+        const response = await fetch(`https://trabalho-no-sql.vercel.app/pets/${id}`);
 
         const pet = await response.json();
 
@@ -100,7 +100,7 @@ async function carregarEditarPet() {
     if (!id) return alert('ID do pet não encontrado!');
 
     try {
-        const response = await fetch(`/pets/${id}`);
+        const response = await fetch(`https://trabalho-no-sql.vercel.app/pets/${id}`);
         
         console.log("Resposta da API:", response);  // Verifica se a requisição foi bem-sucedida
         
@@ -140,7 +140,7 @@ async function atualizarPet(event) {
 
     novosDadosPets.id = id; 
     try {
-        const response = await fetch(`/pets/${id}`, {
+        const response = await fetch(`https://trabalho-no-sql.vercel.app/pets/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(novosDadosPets), // Envia os dados do pet com o ID
