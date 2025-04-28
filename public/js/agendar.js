@@ -15,7 +15,7 @@ document
     };
 
     try {
-      const response = await fetch("http://localhost:3000/agendas2", {
+      const response = await fetch("https://trabalho-no-sql.vercel.app/agendas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
