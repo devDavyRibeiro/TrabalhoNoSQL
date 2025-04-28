@@ -119,7 +119,7 @@ async function atualizarAgenda(event) {
     const id = document.getElementById('id').value || new URLSearchParams(window.location.search).get('id');
 
     // Captura todos os dados do formulário
-    const novosDadosAgenda = Array.from(document.querySelectorAll('#form-editarAgendamento input, #form-editarAgendamento select'))
+    const novosDadosAgenda = Array.from(document.querySelectorAll('#form-editarAgendamento input'))
         .reduce((acc, input) => {
             acc[input.id] = input.value || (input.type === 'number' ? 0 : '');
             return acc;
@@ -150,7 +150,7 @@ async function atualizarAgenda(event) {
 if (window.location.pathname.includes('editarAgenda.html')) {
     document.addEventListener('DOMContentLoaded', () => {
         carregarEditarAgenda();
-        const formEditar = document.getElementById('form-agendamento');
+        const formEditar = document.getElementById('form-editarAgendamento');
         formEditar?.addEventListener('submit', atualizarAgenda);
     });
 }

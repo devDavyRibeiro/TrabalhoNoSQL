@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 
-export const getAgendas2 = async (req, res) => {
+export const getAgendas = async (req, res) => {
   try {
     const filtros = req.query;
 
@@ -52,7 +52,7 @@ export const getAgendas2 = async (req, res) => {
 };
 
 
-export const getAgendabyID2 = async (req, res) => {
+export const getAgendaByID = async (req, res) => {
   try {
     const db = req.app.locals.db;
     const id = req.params.id;
@@ -70,7 +70,7 @@ export const getAgendabyID2 = async (req, res) => {
   }
 };
 
-export const postEstadia2 = async (req, res) => {
+export const postEstadia = async (req, res) => {
   try {
     const db = req.app.locals.db;
     const {cpf_tutor, nome_pet, data_entrada, data_saida,nome_cliente} = req.body;
@@ -94,7 +94,7 @@ export const postEstadia2 = async (req, res) => {
   }
 };
 
-export const putEstadia2 = async (req, res) => {
+export const putEstadia = async (req, res) => {
   try {
     const db = req.app.locals.db;
     const id = req.params.id; 
@@ -132,7 +132,7 @@ export const putEstadia2 = async (req, res) => {
 }
 
 
-export const deleteEstadia2 = async (req, res) => {
+export const deleteEstadia = async (req, res) => {
     const db = req.app.locals.db;
     const id = req.params.id;
   
