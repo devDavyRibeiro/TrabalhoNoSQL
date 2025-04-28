@@ -1,8 +1,8 @@
 // Instale a extensão REST Client para efetuar os testes
 // Teste da API REST de Pets, Clientes e Estadia
 
-@basePetURL = http://localhost:3000/pets
-@baseAgendaURL = http://localhost:3000/agendas
+@basePetURL = https://trabalho-no-sql.vercel.app/api/pets
+@baseAgendaURL = https://trabalho-no-sql.vercel.app/api/agendas
 @idPet = 680e782478d4b003262dedaf
 @idEstadia = 680e776178d4b003262dedae
 
