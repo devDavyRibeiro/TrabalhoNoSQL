@@ -11,7 +11,7 @@ const URL = process.env.URL;
 
 app.use(cors());
 app.use(express.json())
-app.use(`${URL}/`, express.static('public'))
+app.use(`/`, express.static('public'))
 
 
 app.use(`/api/pets`, petRouter)
