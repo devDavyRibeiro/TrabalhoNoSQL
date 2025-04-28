@@ -128,7 +128,7 @@ async function atualizarAgenda(event) {
 
     novosDadosAgenda.id = id; 
     try {
-        const response = await fetch(`/agendas2/${id}`, {
+        const response = await fetch(`https://trabalho-no-sql.vercel.app/api/agendas/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(novosDadosAgenda), // Envia os dados do pet com o ID
