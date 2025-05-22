@@ -32,8 +32,13 @@ document
         alert("Pet cadastrado com sucesso!");
         let pet = await response.json();
         console.log(pet);
+        document.getElementById("formulario").reset();
+       
+
       } else {
-        alert("Erro ao cadastrar o pet. Verifique os dados e tente novamente.");
+        const erro = await response.json(); 
+        alert(erro.erro || "Erro ao cadastrar o pet. Verifique os dados.");
+
       }
     } catch (error) {
       console.error("Erro na requisição:", error);
