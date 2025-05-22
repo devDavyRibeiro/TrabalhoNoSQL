@@ -1,17 +1,17 @@
 
 
-export const postClient = async (req, res) => {
+export const postUsuario = async (req, res) => {
     const db = req.app.locals.db;
 
-    const novoPet = req.body; // pegando os dados do corpo da requisição
+    const novoUser = req.body; // pegando os dados do corpo da requisição
 
-    await db.collection('client').insertOne(novoPet); // inserindo na collection
+    await db.collection('client').insertOne(novoUser); // inserindo na collection
     res.status(201).json({ mensagem: 'Tutor cadastrado com sucesso!' }); // resposta
 };
 
 
 //Delete Client
-export const deleteClient = async (req, res) => {
+export const deleteUsuario = async (req, res) => {
     const db = req.app.locals.db;
     const id = req.params.id;
 

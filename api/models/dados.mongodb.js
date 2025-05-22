@@ -147,3 +147,13 @@ db.estadia.find({})
 use('banco')
 db.pet.find({})
 
+use('banco')
+db.client.insertOne({
+  nome: 'Davy Oliveira Ribeiro',
+  email: 'davy@gmail.com',
+  senha: '1234',
+  cpf: '47251787806'
+})
+
+use('banco')
+db.client.find()

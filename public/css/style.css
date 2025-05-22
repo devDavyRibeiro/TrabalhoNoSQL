@@ -9,7 +9,7 @@
   
   body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+    background-color: #fffafa;
     color: #333;
   }
   
@@ -184,10 +184,13 @@
   input, select, textarea {
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border-color: #4CAF50 !important; 
     border-radius: 4px;
+    transition: 0.1s;
   }
-  
+  input:focus, select:focus, textarea:focus{
+    box-shadow: 0 0 0 .25rem #87f18b !important;
+  }
   button {
     padding: 12px;
     background-color: #4CAF50;
