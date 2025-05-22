@@ -2,7 +2,7 @@
 // Teste da API REST de Pets, Clientes e Estadia
 
 @basePetURL = https://trabalho-no-sql.vercel.app/api/pets
-@baseAgendaURL = https://trabalho-no-sql.vercel.app/api/agendas
+@baseUsuarioURL = https://trabalho-no-sql.vercel.app/api/usuarios
 @idPet = 680e782478d4b003262dedaf
 @idEstadia = 680e776178d4b003262dedae
 
@@ -60,22 +60,22 @@ Content-Type: application/json
 
 ###
 // GET - Lista estadias (filtrar por CPF)
-GET {{baseAgendaURL}}/?cpf_tutor=46601194832
+GET {{baseUsuarioURL}}/?cpf_tutor=46601194832
 Content-Type: application/json
 
 ###
 // GET - Lista estadias por intervalo de datas
-GET {{baseAgendaURL}}/?data_entrada=2025-04-05&data_saida=2025-04-30
+GET {{baseUsuarioURL}}/?data_entrada=2025-04-05&data_saida=2025-04-30
 Content-Type: application/json
 
 ###
 // GET - Buscar estadia pelo ID
-GET {{baseAgendaURL}}/{{idEstadia}}
+GET {{baseUsuarioURL}}/{{idEstadia}}
 Content-Type: application/json
 
 ###
 // POST - Cadastrar nova estadia
-POST {{baseAgendaURL}}
+POST {{baseUsuarioURL}}
 Content-Type: application/json
 
 {
@@ -88,7 +88,7 @@ Content-Type: application/json
 
 ###
 // PUT - Atualizar estadia
-PUT {{baseAgendaURL}}/{{idEstadia}}
+PUT {{baseUsuarioURL}}/{{idEstadia}}
 Content-Type: application/json
 
 {
@@ -100,5 +100,5 @@ Content-Type: application/json
 
 ###
 // DELETE - Remover estadia
-DELETE {{baseAgendaURL}}/{{idEstadia}}
+DELETE {{baseUsuarioURL}}/{{idEstadia}}
 Content-Type: application/json
