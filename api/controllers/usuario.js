@@ -1,12 +1,16 @@
-
+import bcrypt from 'bcrypt'
 
 export const postUsuario = async (req, res) => {
     const db = req.app.locals.db;
+    const {senha} = req.body;
+    const salt = bcrypt.genSaltSync(Number(process.env.SALT_ROUNDS));
+    let senhaCriptografada = bcrypt.hashSync(senha, salt);
 
     const novoUser = req.body; // pegando os dados do corpo da requisição
+    novoUser.senha = senhaCriptografada;
 
     await db.collection('client').insertOne(novoUser); // inserindo na collection
-    res.status(201).json({ mensagem: 'Tutor cadastrado com sucesso!' }); // resposta
+    res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso!' }); // resposta
 };
 
 
