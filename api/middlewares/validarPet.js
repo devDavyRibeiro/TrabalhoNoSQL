@@ -18,6 +18,7 @@ export const validatePet = [
     .notEmpty()
     .withMessage("O nome do pet é obrigatório")
     .isLength({ max: 50 })
+    .matches(/^[A-Za-zÀ-ú\s()\-.,'"!?]+$/, "i")
     .withMessage("O nome do pet deve ter no máximo 50 caracteres"),
 
   check("especie")
@@ -44,7 +45,7 @@ export const validatePet = [
     .notEmpty()
     .withMessage("A idade é obrigatória")
     .isInt()
-    .withMessage("Tem que ser valor numérico"),
+    .withMessage("A idade tem que ser valor numérico"),
   
     check("nome_tutor")
     .notEmpty()
