@@ -1,5 +1,5 @@
 // Instale a extensão REST Client para efetuar os testes
-// Teste da API REST de Pets, Clientes e Estadia
+// Teste da API REST de Pets, Clientes e usuário
 
 @basePetURL = https://trabalho-no-sql.vercel.app/api/pets
 @baseUsuario = https://trabalho-no-sql.vercel.app/api/usuarios
@@ -8,7 +8,7 @@
 
 @idPet = 680e782478d4b003262dedaf
 
-@idEstadia = 680e776178d4b003262dedae
+@idusuário = 680e776178d4b003262dedae
 
 ###
 // GET - Lista todos os pets com filtros
@@ -63,22 +63,17 @@ Content-Type: application/json
 
 
 ###
-// GET - Lista estadias (filtrar por CPF)
+// GET - Lista usuarios (filtrar por CPF)
 GET {{baseUsuarioTeste}}
 Content-Type: application/json
 
 ###
-// GET - Lista estadias por intervalo de datas
-GET {{baseUsuarioTeste}}/682e5f5fb6a84a646d6a70be
-Content-Type: application/json
-
-###
-// GET - Buscar estadia pelo ID
+// GET - Buscar usuário pelo ID
 GET {{baseUsuarioTeste}}/6838cb5e89959c040d13b58f
 Content-Type: application/json
 
 ###
-// POST - Cadastrar nova estadia
+// POST - Cadastrar nova usuário
 # @prompt senha
 POST {{baseUsuarioTeste}}
 Content-Type: application/json
@@ -91,19 +86,30 @@ Content-Type: application/json
 }
 
 ###
-// PUT - Atualizar estadia
+// PUT - Atualizar usuário
 # @prompt senha
-PUT @{{baseUsuarioTeste}}/6838cb5e89959c040d13b58f
+PUT @{{baseUsuarioTeste}}/682e5f5fb6a84a646d6a70be
 Content-Type: application/json
 
 {
   "nome": "João",
   "cpf": "71248522001",
-  "email": "teste@teste.com",
-  "senha": {{{{senha}}}}
+  "email": "davy@gmail.com",
+  "senha": {{senha}}
 }
 
 ###
-// DELETE - Remover estadia
-DELETE {{baseUsuarioTeste}}/6838cb5e89959c040d13b58f
+// LOGIN - LOGAR
+
+POST {{baseUsuarioTeste}}/login
+Content-Type: application/json
+
+{
+  "email": "davy.oliv.ribeiro@gmail.com",
+  "senha": "123"
+}
+
+###
+// DELETE - Remover usuário
+DELETE {{baseUsuarioTeste}}/683224f82f71b833502a3e02
 Content-Type: application/json

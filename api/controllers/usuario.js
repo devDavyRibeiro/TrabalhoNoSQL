@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt'
-import { body } from 'express-validator';
+import e from 'express';
+import { body, param } from 'express-validator';
 import { ObjectId } from 'mongodb';
+import jwt from 'jsonwebtoken'
 export const getListUsuario = async(req,res) =>{
     try {
         const db = req.app.locals.db;
@@ -18,9 +20,9 @@ export const getListUsuario = async(req,res) =>{
         }
 
         const usuarios = await db.collection('client').find(query).toArray(); 
-        res.status(200).json({usuarios});
+        return res.status(200).json({usuarios});
     } catch (error) {
-        res.status(500).json({ mensagem: 'Erro ao cadastrar procurar usuários.', error });
+        return res.status(500).json({ mensagem: 'Erro ao cadastrar procurar usuários.', error });
     }
 }
 export const getById = async (req,res) =>{
@@ -29,9 +31,9 @@ export const getById = async (req,res) =>{
         const {id} = req.params;
 
         let usuario = await db.collection('client').findOne({_id: ObjectId.createFromHexString(id)});
-        res.status(200).json(usuario);
+        return res.status(200).json(usuario);
     } catch (error) {
-        res.status(500).json({ mensagem: 'Erro ao cadastrar procurar usuário.', error });
+       return res.status(500).json({ mensagem: 'Erro ao cadastrar procurar usuário.', error });
     }
 }
 export const postUsuario = async (req, res) => {
@@ -43,9 +45,9 @@ export const postUsuario = async (req, res) => {
         novoUser.senha = criptografarSenha(senha);
     
         await db.collection('client').insertOne(novoUser); // inserindo na collection
-        res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso!' }); // resposta   
+        return res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso!' }); // resposta   
     } catch (error) {
-        res.status(500).json({ mensagem: 'Erro ao cadastrar o usuário.', error });
+       return res.status(500).json({ mensagem: 'Erro ao cadastrar o usuário.', error });
     }
 };
 
@@ -70,7 +72,7 @@ export const putUsuario = async(req,res)=>{
             return res.status(400).json({ mensagem: "Nenhuma modificação realizada." });
         }
     } catch (error) {
-        res.status(500).json({ mensagem: 'Erro ao atualizar o usuário.', error });
+        return res.status(500).json({ mensagem: 'Erro ao atualizar o usuário.', error });
     }
 }
 export const deleteUsuario = async (req, res) => {
@@ -84,30 +86,69 @@ export const deleteUsuario = async (req, res) => {
             return res.status(404).json({ mensagem: 'usuário não encontrado.' });
         }
 
-        res.status(200).json({ mensagem: 'Tutor deletado com sucesso!' });
+        return res.status(200).json({ mensagem: 'Tutor deletado com sucesso!' });
     } catch (erro) {
-        res.status(500).json({ mensagem: 'Erro ao deletar o tutor.', erro });
+        return res.status(500).json({ mensagem: 'Erro ao deletar o tutor.', erro });
     }
 };
 
 export const efetuaLogin = async (req,res) =>{
-
+try {
     const db = req.app.locals.db;
     const {email, senha} = req.body;
     
-    const usuario = await db.collection('client').findOne({email:email,senha:senha})
 
-    if(usuario){
-        const {nome, cpf} = usuario
-        const payload = {
-            nome,
-            cpf
-        }
+    const usuario = await db.collection('client').findOne({email:email})
 
-        console.log(payload)
+    if(!usuario){
+        return res.status(404).json({
+            errors:[{
+                value: `${email}`,
+                msg: `O email não foi cadastrado`,
+                param: 'email'
+            }]
+        })
     }
-    else{
-        res.status(401).json({mensagem:"Credeciais inválidas"})
+    
+    const isMath = await bcrypt.compare(senha, usuario.senha);
+    if(!isMath){
+        return res.status(403).json({
+            errors:[{
+                value: `senha`,
+                msg: `Senha incorreta`,
+                param: 'senha'        
+            }]
+        })
     }
+
+    jwt.sign(
+      {
+        usuario: {
+          id: usuario._id,
+        },
+      },
+
+      process.env.SECRET_KEY,
+
+      {
+        expiresIn: process.env.EXPIRES_IN,
+      },
+      (err, token) => {
+        if (err) throw err;
+        return res.status(200).json({
+          access_token: token,
+          msg: "Login efetuado com sucesso",
+        });
+      }
+    );
+} catch (error) {
+    return res.status(500).json({mensagem:`Erro ao Logar: ${error}`})
 }
+
+
 }
+ function criptografarSenha (senha='') {
+    const salt =  bcrypt.genSaltSync(Number(process.env.SALT_ROUNDS));
+    return  bcrypt.hashSync(senha, salt);
+}
+
