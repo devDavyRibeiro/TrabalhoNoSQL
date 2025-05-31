@@ -36,22 +36,22 @@
           <h1>Cadastre-se</h1>
         </header>
         <article class="card-body">
-            <form>
+            <form id="formulario">
                 <div class="mb-2">
                     <label for="nome" class="form-label">Nome</label>
-                    <input type="text" name="nome" id="nome" class="form-control" autofocus autocomplete="email">
+                    <input type="text" name="nome" id="nome" class="form-control" autofocus >
                 </div>
                 <div class="mb-2">
                     <label for="cpf" class="form-label">cpf</label>
-                    <input type="text" name="cpf" id="cpf" class="form-control" autofocus autocomplete="email">
+                    <input type="text" name="cpf" id="cpf" class="form-control" >
                 </div>
                 <div class="mb-2">                
                 <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" id="email" class="form-control" autofocus autocomplete="email">
+                <input type="email" name="email" id="email" class="form-control"  autocomplete="name">
                 </div>
                 <div class="mb-2">
                 <label for="senha" class="form-label">Senha</label>
-                <input type="password" name="senha" id="senha" class="form-control" required>
+                <input type="password" name="senha" id="senha" class="form-control" autocomplete="current-password" required>
                 </div>
                 <div class="mb-3 mx-auto">
                 <button type="submit" class="btn btn-success px-4">Cadastrar</button>
@@ -73,6 +73,7 @@
   <footer>
     <p>&copy; 2025 Hotel Para Pets - Todos os direitos reservados</p>
   </footer>
+  <script src="js/usuario/cadastrar-usuario.js"></script>
 </body>
 
 </html>
