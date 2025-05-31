@@ -54,18 +54,23 @@ export const putUsuario = async(req,res)=>{
         const db = req.app.locals.db;
         const {id} = req.params;
         const {senha} = req.body;
-        const existsUsuario = await db.collection('client').findOne({id: ObjectId.createFromHexString(id)});
+        const existsUsuario = await db.collection('client').findOne({_id: ObjectId.createFromHexString(id)});
         
-        if(existsUsuario){
-            res.status(404).json({mensagem:'Não foi encontrado o usuário'})
+        if(!existsUsuario){
+           return res.status(404).json({mensagem:'Não foi encontrado o usuário'})
         }
 
-        const usuario = body;
+        const usuario = req.body
         usuario.senha = criptografarSenha(senha);
-        await db.collection('client').updateOne({id: ObjectId.createFromHexString(id)},{$set:usuario});
-        res.status(200).json({ mensagem: "Usuário atualizado com sucesso!" });
+        const result = await db.collection('client').updateOne({_id: ObjectId.createFromHexString(id)},{$set:usuario});
+        if(result.modifiedCount > 0){
+           return res.status(200).json({ mensagem: "Usuário atualizado com sucesso!" });
+        }
+        else{
+            return res.status(400).json({ mensagem: "Nenhuma modificação realizada." });
+        }
     } catch (error) {
-        
+        res.status(500).json({ mensagem: 'Erro ao atualizar o usuário.', error });
     }
 }
 export const deleteUsuario = async (req, res) => {
@@ -73,7 +78,7 @@ export const deleteUsuario = async (req, res) => {
         const db = req.app.locals.db;
         const id = req.params.id;
 
-        const resultado = await db.collection('client').deleteOne({ id: ObjectId.createFromHexString(id) });
+        const resultado = await db.collection('client').deleteOne({ _id: ObjectId.createFromHexString(id) });
 
         if (resultado.deletedCount === 0) {
             return res.status(404).json({ mensagem: 'usuário não encontrado.' });

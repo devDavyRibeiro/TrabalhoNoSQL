@@ -2,7 +2,7 @@
 // Teste da API REST de Pets, Clientes e Estadia
 
 @basePetURL = https://trabalho-no-sql.vercel.app/api/pets
-@baseUsuarioTeste = https://trabalho-no-sql.vercel.app/api/usuarios
+@baseUsuario = https://trabalho-no-sql.vercel.app/api/usuarios
 
 @baseUsuarioTeste = http://localhost:3000/api/usuarios
 
@@ -69,40 +69,41 @@ Content-Type: application/json
 
 ###
 // GET - Lista estadias por intervalo de datas
-GET {{baseUsuarioTeste}}/
+GET {{baseUsuarioTeste}}/682e5f5fb6a84a646d6a70be
 Content-Type: application/json
 
 ###
 // GET - Buscar estadia pelo ID
-GET {{baseUsuarioTeste}}/683224f82f71b833502a3e02
+GET {{baseUsuarioTeste}}/6838cb5e89959c040d13b58f
 Content-Type: application/json
 
 ###
 // POST - Cadastrar nova estadia
+# @prompt senha
 POST {{baseUsuarioTeste}}
 Content-Type: application/json
 
 {
-  "cpf_tutor": "46601194832",
-  "nome_pet": "Koda",
-  "data_entrada": "2025-04-05",
-  "data_saida": "2025-04-30",
-  "id_pet": "680e69b455d8a81f7b5ee089"
+  "cpf":"47251787806",
+  "nome": "Davy Oliveira Ribeiro",
+  "email":"davy.oliv.ribeiro@gmail.com",
+  "senha" : {{senha}}
 }
 
 ###
 // PUT - Atualizar estadia
-PUT {{baseUsuarioTeste}}/682e5f5fb6a84a646d6a70be
+# @prompt senha
+PUT @{{baseUsuarioTeste}}/6838cb5e89959c040d13b58f
 Content-Type: application/json
 
 {
-  "nome": "Davy Oliveira Ribeiro",
-  "email": "davy@gmail.com",
-  "senha": "Mudar@123",
-  "cpf": "47251787806"
+  "nome": "João",
+  "cpf": "71248522001",
+  "email": "teste@teste.com",
+  "senha": {{{{senha}}}}
 }
 
 ###
 // DELETE - Remover estadia
-DELETE {{baseUsuarioTeste}}/683224f82f71b833502a3e02
+DELETE {{baseUsuarioTeste}}/6838cb5e89959c040d13b58f
 Content-Type: application/json
