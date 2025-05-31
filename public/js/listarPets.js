@@ -13,8 +13,8 @@ async function listarPets() {
     if (cpfCliente) params.append('cpfCliente', cpfCliente);
     if (nome) params.append('nome' , nome);
     if (especie) params.append('especie', especie);
-    if (idadeMinima) params.append('idadeMinima', idadeMinima);
-    if (idadeMaxima) params.append('idadeMaxima', idadeMaxima);
+    if (idadeMinima) params.append('idade_min', idadeMinima);
+    if (idadeMaxima) params.append('idade_max', idadeMaxima);
     if (porte) params.append('porte', porte);
 
     if ([...params].length > 0) {

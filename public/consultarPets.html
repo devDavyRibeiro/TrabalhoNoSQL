@@ -1,77 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Consultar Pets</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Seu CSS aqui -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Seu CSS aqui -->
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <img src="/img/pet-hotel_10753981 (1).png" alt="Logo" />
+        <nav>
+          <ul>
+            <li><a href="index.html">Página Inicial</a></li>
+            <li><a href="cadastro.html">Cadastro de Pet</a></li>
+            <li><a href="agendar.html">Reservar Hospedagem</a></li>
+            <li><a href="consultaReserva.html">Consulta de Reservas</a></li>
+            <li><a href="consultarPets.html">Consultar Pets</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
+    <div class="containerPet">
+      <h1>Consultar Pets</h1>
 
-</head>
-<body>
-  <header>
-    <div class="header-container">
-        <img src="/img/pet-hotel_10753981 (1).png" alt="Logo">
-      <nav>
-        <ul>
-          <li><a href="index.html">Página Inicial</a></li>
-          <li><a href="cadastro.html">Cadastro de Pet</a></li>
-          <li><a href="agendar.html">Reservar Hospedagem</a></li>
-          <li><a href="consultaReserva.html">Consulta de Reservas</a></li>
-          <li><a href="consultarPets.html">Consultar Pets</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+      <!-- Filtros -->
+      <div class="filtros">
+        <input type="text" id="cpfCliente" placeholder="CPF do Tutor" />
+        <input type="text" id="nome" placeholder="Nome do Pet" />
+        <label for="especie"></label>
+        <select id="especie" name="especie" style="color: gray">
+          <option value="" disabled selected style="color: gray">
+            Espécie
+          </option>
+          <option value="Cachorro" style="color: black">Cachorro</option>
+          <option value="Gato" style="color: black">Gato</option>
+          <option value="Coelho" style="color: black">Coelho</option>
+          <option value="Hamster" style="color: black">Hamster</option>
+          <option value="Outro" style="color: black">Outro</option>
+        </select>
+        <input
+          type="number"
+          id="idadeMinima"
+          placeholder="Idade Mínima(números)" min="1"
+        />
+        <input
+          type="number"
+          id="idadeMaxima"
+          placeholder="Idade Máxima(números)" min="1"
+        />
 
-  <div class="containerPet">
+        <label for="porte"></label>
+        <select id="porte" name="porte" style="color: gray">
+          <option value="" disabled selected style="color: gray">Porte</option>
+          <option value="pequeno" style="color: black">Pequeno</option>
+          <option value="medio" style="color: black">Médio</option>
+          <option value="grande" style="color: black">Grande</option>
+        </select>
 
-    <h1>Consultar Pets</h1>
-
-    <!-- Filtros -->
-    <div class="filtros">
-        <input type="text" id="cpfCliente" placeholder="CPF do Tutor">
-        <input type="text" id="nome" placeholder="Nome do Pet">
-        <input type="text" id="especie" placeholder="Espécie">
-        <input type="number" id="idadeMinima" placeholder="Idade Mínima(números)">
-        <input type="number" id="idadeMaxima" placeholder="Idade Máxima(números)">
-        <input type="text" id="porte" placeholder="Porte">
         <button onclick="listarPets()">Buscar</button>
-    </div>
+      </div>
 
-    <!-- Tabela -->
-    <table id="tabelaPets">
+      <!-- Tabela -->
+      <table id="tabelaPets">
         <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Espécie</th>
-                <th>Raça</th>
-                <th>Sexo</th>
-                <th>Idade(anos)</th>
-                <th>Porte</th>
-                <th>Nome do Tutor</th>
-                <th>CPF do Tutor</th>
-                <th>Peso(Kg)</th>
-                <th>Observações</th>
-                <th>Ações</th>
-            </tr>
+          <tr>
+            <th>Nome</th>
+            <th>Espécie</th>
+            <th>Raça</th>
+            <th>Sexo</th>
+            <th>Idade(anos)</th>
+            <th>Porte</th>
+            <th>Nome do Tutor</th>
+            <th>CPF do Tutor</th>
+            <th>Peso(Kg)</th>
+            <th>Observações</th>
+            <th>Ações</th>
+          </tr>
         </thead>
         <tbody id="corpoTabela">
-            <!-- pets serão inseridos aqui -->
+          <!-- pets serão inseridos aqui -->
         </tbody>
-    </table>
+      </table>
 
-    <!-- Modal de detalhes -->
-    <div id="modalDetalhes" class="modal" style="display:none;">
+      <!-- Modal de detalhes -->
+      <div id="modalDetalhes" class="modal" style="display: none">
         <div class="modal-content">
-            <span class="fechar" onclick="fecharModal()">&times;</span>
-            <h2>Detalhes do Pet</h2>
-            <div id="detalhesPet">
-                <!-- Detalhes carregados via JS -->
-            </div>
+          <span class="fechar" onclick="fecharModal()">&times;</span>
+          <h2>Detalhes do Pet</h2>
+          <div id="detalhesPet">
+            <!-- Detalhes carregados via JS -->
+          </div>
         </div>
+      </div>
     </div>
-  </div>
 
-    <script src="/js/listarPets.js"></script> <!-- Puxa seu JS -->
-</body>
+    <script src="/js/listarPets.js"></script>
+    <!-- Puxa seu JS -->
+  </body>
 </html>
