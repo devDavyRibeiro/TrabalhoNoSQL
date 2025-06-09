@@ -13,9 +13,10 @@ export const getPets = async (req, res) => {
       const cpfFormatado = formatarCPF(filtros.cpfCliente);
       query.cpfCliente = cpfFormatado;  // Faz a busca no banco com CPF SEM pontuação
     }
-
-    if (filtros.nome) query.nome = filtros.nome;
-
+  if (filtros.nome) {
+   query.nome = { $regex: filtros.nome, $options: 'i' };
+ 
+  }
     if (filtros.especie) {
       query.especie = { $regex: `^${filtros.especie}$`, $options: 'i' };
     }
