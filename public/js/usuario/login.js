@@ -13,17 +13,17 @@ document
 
     try {
         let localURL ="http://localhost:3000/api/usuarios";
-        let internetURL = "https://trabalho-no-sql.vercel.app/api/usuarios";
-      const response = await fetch(`${localURL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
 
-      if (response.access_token) {
-        localStorage.setItem('token',response.access_token)
+        const response = await fetch(`${localURL}/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+      if (response.ok) {
+        localStorage.setItem('token',response.accessToken)
         console.log(response)
       } else {
         alert("Erro ao cadastrar o usuario. Verifique os dados e tente novamente.");

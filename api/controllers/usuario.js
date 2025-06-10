@@ -96,8 +96,19 @@ export const efetuaLogin = async (req,res) =>{
 try {
     const db = req.app.locals.db;
     const {email, senha} = req.body;
+    const secret = process.env.SECRET_KEY
+    const expiresIn = process.env.EXPIRES_IN  | "1d";
     
-
+    if(!secret){
+        console.log("Variavel SECRET_KEY não foi definida no .env")
+        return res.status(500).json({
+            errors:[{
+                value: `secret`,
+                msg: `Erro do servidor`,
+                param: 'secret'
+            }]
+        })
+    }
     const usuario = await db.collection('client').findOne({email:email})
 
     if(!usuario){
@@ -128,15 +139,15 @@ try {
         },
       },
 
-      process.env.SECRET_KEY,
+      secret,
 
       {
-        expiresIn: process.env.EXPIRES_IN,
+        expiresIn: expiresIn,
       },
       (err, token) => {
         if (err) throw err;
         return res.status(200).json({
-          access_token: token,
+          accesToken : token,
           msg: "Login efetuado com sucesso",
         });
       }

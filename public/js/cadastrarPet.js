@@ -20,7 +20,7 @@ document
     };
 
     try {
-      const response = await fetch("https://trabalho-no-sql.vercel.app/api/pets", {
+      const response = await fetch("http://localhost:3000/api/pets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
