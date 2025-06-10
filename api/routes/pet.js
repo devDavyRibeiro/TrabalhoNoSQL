@@ -3,6 +3,8 @@ import {getPets, getPetID, postPet, deletePets, putPets} from "../controllers/pe
 import { validatePet } from "../middlewares/validarPet.js";
 const router = express.Router()
 
+
+
 //Depois de definir o caminho, só chamar o nome da função que você irá usar. EX: getPets irá puxar todo mundo que tiver na collection pet, mas também pode ser deletePet, e assim por diante
 router.get("/", getPets)  //listagem total
 // router.get("/nome") //listagem por nome

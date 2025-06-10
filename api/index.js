@@ -3,6 +3,8 @@ import petRouter from './routes/pet.js';
 import agendaRouter from './routes/agendas.js';  // Ajuste o caminho se necessário
 import usuarioRouter from './routes/usuario.js';
 import { connectMongoDB } from './config/db.js';
+import swaggerUI from 'swagger-ui-express';
+import fs from 'fs';
 import cors from 'cors'
 
 
@@ -18,6 +20,9 @@ app.use(`/`, express.static('public'))
 app.use(`/api/pets`, petRouter)
 app.use(`/api/agendas`, agendaRouter);  // Agora o prefixo '/agenda' será usado para suas rotas
 app.use(`/api/usuarios`, usuarioRouter);  // Agora o prefixo '/agenda' será usado para suas rotas
+
+// Rota da documentação Swagger 
+app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(JSON.parse(fs.readFileSync('./api/swagger/swagger_output.json')),))
 
 
 connectMongoDB(app).then(() => {
