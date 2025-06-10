@@ -1,5 +1,5 @@
 async function listarPets() {
-    const cpfCliente = document.getElementById('cpfCliente').value.trim();
+   // const cpfCliente = document.getElementById('cpfCliente').value.trim();
     const nome = document.getElementById('nome').value.trim();
     const especie = document.getElementById('especie').value.trim();
     const idadeMinima = document.getElementById('idadeMinima').value.trim();
@@ -10,7 +10,7 @@ async function listarPets() {
 
     const params = new URLSearchParams();
 
-    if (cpfCliente) params.append('cpfCliente', cpfCliente);
+    /*if (cpfCliente) params.append('cpfCliente', cpfCliente);*/
     if (nome) params.append('nome' , nome);
     if (especie) params.append('especie', especie);
     if (idadeMinima) params.append('idade_min', idadeMinima);
@@ -43,8 +43,7 @@ async function listarPets() {
                 <td>${pet.idade ? `${pet.idade} anos` : '-'}</td>
                 <td>${pet.porte || '-'}</td>
                 
-                <td>${pet.nome_tutor || '-'}</td>
-                <td>${pet.cpfCliente || '-'}</td>
+               
                 <td>${pet.peso || '-'}</td>
                 <td>${pet.observacoes|| '-'}</td>
                 <td>
@@ -62,7 +61,7 @@ async function listarPets() {
 
 async function verDetalhes(id) {
     try {
-        const response = await fetch(`https://trabalho-no-sql.vercel.app/api/pets/${id}`);
+        const response = await fetch(`http://localhost:3000/api/pets/${id}`);
 
         const pet = await response.json();
 
@@ -71,12 +70,11 @@ async function verDetalhes(id) {
             <p><strong>Nome:</strong> ${pet.nome}</p>
             <p><strong>Espécie:</strong> ${pet.especie}</p>
             <p><strong>Raça:</strong> ${pet.raca}</p>
-            <p><strong>Ano Nascimento:</strong> ${pet.idade}</p>
+            <p><strong>Idade:</strong> ${pet.idade}</p>
             <p><strong>Sexo:</strong> ${pet.sexo}</p>
             <p><strong>Porte:</strong> ${pet.porte}</p>
             <p><strong>Peso:</strong> ${pet.peso}</p>
-            <p><strong>CPF do Tutor:</strong> ${pet.cpfCliente}</p>
-            <p><strong>Nome do Tutor:</strong> ${pet.nome_tutor}</p>
+            
             <p><strong>Observações:</strong> ${pet.observacoes}</p>
         `;
 
@@ -104,7 +102,7 @@ async function carregarEditarPet() {
     if (!id) return alert('ID do pet não encontrado!');
 
     try {
-        const response = await fetch(`https://trabalho-no-sql.vercel.app/api/pets/${id}`);
+        const response = await fetch(`http://localhost:3000/api/pets/${id}`);
         
         console.log("Resposta da API:", response);  // Verifica se a requisição foi bem-sucedida
         
@@ -144,7 +142,7 @@ async function atualizarPet(event) {
 
     novosDadosPets.id = id; 
     try {
-        const response = await fetch(`https://trabalho-no-sql.vercel.app/api/pets/${id}`, {
+        const response = await fetch(`http://localhost:3000/api/pets/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(novosDadosPets), // Envia os dados do pet com o ID
@@ -177,7 +175,7 @@ if (window.location.pathname.includes('editarPet.html')) {
 
 function excluirPet(id) {
     if (confirm('Tem certeza que deseja excluir o pet?')) {
-        fetch(`https://trabalho-no-sql.vercel.app/api/pets/${id}`, {
+        fetch(`http://localhost:3000/api/pets/${id}`, {
             method: 'DELETE'
         }).then(response => {
             if (response.ok) {
@@ -189,3 +187,13 @@ function excluirPet(id) {
         });
     }
 }
+
+/* 
+
+   <td>${pet.nome_tutor || '-'}</td>
+   <td>${pet.cpfCliente || '-'}</td>
+                
+   <p><strong>CPF do Tutor:</strong> ${pet.cpfCliente}</p>
+   <p><strong>Nome do Tutor:</strong> ${pet.nome_tutor}</p>
+                
+                */

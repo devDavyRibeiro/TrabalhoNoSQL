@@ -8,14 +8,15 @@ export const getPets = async (req, res) => {
 
     const query = {};
 
-    // Se o filtro de CPF for passado, removemos pontuação antes de consultar no banco
+   /* // Se o filtro de CPF for passado, removemos pontuação antes de consultar no banco
     if (filtros.cpfCliente) {
       const cpfFormatado = formatarCPF(filtros.cpfCliente);
       query.cpfCliente = cpfFormatado;  // Faz a busca no banco com CPF SEM pontuação
-    }
-
-    if (filtros.nome) query.nome = filtros.nome;
-
+    }*/
+  if (filtros.nome) {
+   query.nome = { $regex: filtros.nome, $options: 'i' };
+ 
+  }
     if (filtros.especie) {
       query.especie = { $regex: `^${filtros.especie}$`, $options: 'i' };
     }
@@ -64,10 +65,11 @@ export const getPetID = async (req, res) => {
   }
 };
 
+/*
 // Função para formatar CPF (remover qualquer pontuação)
 function formatarCPF(cpf) {
   return cpf.replace(/\D/g, "");  // Remove todos os caracteres não numéricos
-}
+}*/
 
 export const postPet = async (req, res) => {
   try {
@@ -81,12 +83,12 @@ export const postPet = async (req, res) => {
       porte,
       observacoes,
       peso,
-      cpfCliente,
-      nome_tutor,
+      //cpfCliente,
+      //nome_tutor,
     } = req.body;
 
     // Formata o CPF para remover qualquer pontuação antes de salvar no banco
-    const cpfClienteSemPontuacao = formatarCPF(cpfCliente);
+    //const cpfClienteSemPontuacao = formatarCPF(cpfCliente);
 
     const newPet = {
       nome,
@@ -97,8 +99,8 @@ export const postPet = async (req, res) => {
       porte,
       observacoes,
       peso,
-      cpfCliente: cpfClienteSemPontuacao, // CPF salvo SEM pontuação
-      nome_tutor,
+      /*cpfCliente: cpfClienteSemPontuacao, // CPF salvo SEM pontuação
+      nome_tutor, */
       created_at: new Date(),
       updated_at: new Date(),
     };
@@ -127,8 +129,8 @@ export const putPets = async (req, res) => {
       porte,
       observacoes,
       peso,
-      cpfCliente,
-      nome_tutor,
+      /*cpfCliente,
+      nome_tutor,*/
     } = req.body;
     const novosDadosPets = {
       id,
@@ -140,8 +142,8 @@ export const putPets = async (req, res) => {
       porte,
       observacoes,
       peso,
-      cpfCliente,
-      nome_tutor,
+     /* cpfCliente,
+      nome_tutor,*/
       updated_at: new Date(),
     };
 
