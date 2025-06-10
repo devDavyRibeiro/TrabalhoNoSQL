@@ -6,7 +6,7 @@ async function listarPets() {
     const idadeMaxima = document.getElementById('idadeMaxima').value.trim();
     const porte = document.getElementById('porte').value.trim();
 
-    let url = 'https://trabalho-no-sql.vercel.app/api/pets'; // ajuste se precisar
+    let url = 'http://localhost:3000/api/pets'; // ajuste se precisar
 
     const params = new URLSearchParams();
 
@@ -22,7 +22,11 @@ async function listarPets() {
     }
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(url,{
+            headers: {
+                accessToken: localStorage.getItem('token')
+            }
+        });
         const pets = await response.json();
 
         const corpoTabela = document.getElementById('corpoTabela');

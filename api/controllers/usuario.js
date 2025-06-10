@@ -97,7 +97,8 @@ try {
     const db = req.app.locals.db;
     const {email, senha} = req.body;
     const secret = process.env.SECRET_KEY
-    const expiresIn = process.env.EXPIRES_IN  | "1d";
+    const expiresIn = process.env.EXPIRES_IN  
+    console.log(`Expires: ${expiresIn}`)
     
     if(!secret){
         console.log("Variavel SECRET_KEY não foi definida no .env")
@@ -147,7 +148,7 @@ try {
       (err, token) => {
         if (err) throw err;
         return res.status(200).json({
-          accesToken : token,
+          accessToken : token,
           msg: "Login efetuado com sucesso",
         });
       }

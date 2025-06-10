@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 export default async function auth(req, res, next){
-    const token = req.header('access-token') //obtém o token
+    const token = req.header('accessToken') //obtém o token
     if(!token) return res.status(401).json({ //401-Not Authorized
         msg: 'Acesso negado. É obrigatório o envio do token JWT'
     })
@@ -9,6 +9,6 @@ export default async function auth(req, res, next){
         req.usuario = decoded.usuario //adicionamos o usuário atual na requis.
         next() // direcionamos para o endpoint
     } catch(error){
-        res.status(403).send({error: 'Token inválido!'})
+        res.status(403).send({error: 'Token inválido!', message: error.message})
     }
 }

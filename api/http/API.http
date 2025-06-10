@@ -1,10 +1,10 @@
 // Instale a extensão REST Client para efetuar os testes
 // Teste da API REST de Pets, Clientes e usuário
 
-@basePetURL = https://trabalho-no-sql.vercel.app/api/pets
-@baseUsuario = https://trabalho-no-sql.vercel.app/api/usuarios
+@basePetURL = http://localhost:3000/api/pets
 
-@baseUsuarioTeste = http://localhost:3000/api/usuarios
+@baseUsuario = http://localhost:3000/api/usuarios
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjg0NzY5MjNhOWMxOTY3YjIzYzNkOTEwIn0sImlhdCI6MTc0OTUxNjQ4MCwiZXhwIjoxNzQ5NTE2NDgwfQ.6j0AhnJEAmBjRfWP8Ktc_zqZAvAOKja1mc1pm9AN5rA
 
 @idPet = 680e782478d4b003262dedaf
 
@@ -12,8 +12,9 @@
 
 ###
 // GET - Lista todos os pets com filtros
-GET {{basePetURL}}?cpfCliente=47192768812&especie=cachorro&porte=medio&idade_min=2&idade_max=8
+GET {{basePetURL}}
 Content-Type: application/json
+accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjg0NzY5MjNhOWMxOTY3YjIzYzNkOTEwIn0sImlhdCI6MTc0OTUxNzAyOCwiZXhwIjoxNzQ5NjAzNDI4fQ.87xn3diOly2g_-W4a-vvxUS8-JPeNzr2hv7mVZr0sVU
 
 ###
 // GET - Busca pet pelo ID
@@ -62,18 +63,18 @@ Content-Type: application/json
 
 ###
 // GET - Lista usuarios (filtrar por CPF)
-GET {{baseUsuarioTeste}}
+GET {{baseUsuario}}
 Content-Type: application/json
 
 ###
 // GET - Buscar usuário pelo ID
-GET {{baseUsuarioTeste}}/68476119496d5d43f5f4dffc
+GET {{baseUsuario}}/68476119496d5d43f5f4dffc
 Content-Type: application/json
 
 ###
 // POST - Cadastrar nova usuário
 # @prompt senha
-POST {{baseUsuarioTeste}}
+POST {{baseUsuario}}
 Content-Type: application/json
 
 {
@@ -86,7 +87,7 @@ Content-Type: application/json
 ###
 // PUT - Atualizar usuário
 # @prompt senha
-PUT @{{baseUsuarioTeste}}/68476119496d5d43f5f4dffc
+PUT @{{baseUsuario}}/68476119496d5d43f5f4dffc
 Content-Type: application/json
 
 {
@@ -100,15 +101,15 @@ Content-Type: application/json
 // LOGIN - LOGAR
 
 # @prompt senha
-POST {{baseUsuarioTeste}}/login
+POST {{baseUsuario}}/login
 Content-Type: application/json
 
 {
-  "email": "davy.oliv.ribeiro@gmail.com",
-  "senha": "123"
+  "email": "joao@gmail.com",
+  "senha": "{{senha}}"
 }
 
 ###
 // DELETE - Remover usuário
-DELETE {{baseUsuarioTeste}}/683224f82f71b833502a3e02
+DELETE {{baseUsuario}}/683224f82f71b833502a3e02
 Content-Type: application/json
