@@ -46,7 +46,7 @@ export const validatePet = [
     .withMessage("A idade é obrigatória")
     .isInt()
     .withMessage("A idade tem que ser valor numérico"),
-  
+ /* 
     check("nome_tutor")
     .notEmpty()
     .withMessage("O nome do Tutor é obrigatório")
@@ -63,7 +63,7 @@ export const validatePet = [
         throw new Error("CPF deve ter 11 dígitos");
       }
       return true;
-    }),
+    }),*/
   // Data de nascimento e observações são opcionais
   check("observacoes")
     .optional()

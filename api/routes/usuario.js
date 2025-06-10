@@ -1,5 +1,5 @@
 import express from "express";
-import { postUsuario, deleteUsuario, getListUsuario, putUsuario, getById } from "../controllers/usuario.js";
+import { postUsuario, deleteUsuario, getListUsuario, putUsuario, getById, efetuaLogin } from "../controllers/usuario.js";
 import { validateUsuario } from "../middlewares/validarUsuario.js";
 
 const router = express.Router()
@@ -9,6 +9,8 @@ router.get('/', getListUsuario);
 router.get('/:id', getById)
 
 router.post("/", validateUsuario, postUsuario) // criação
+
+router.post("/login",efetuaLogin)
 
 router.put("/:id",validateUsuario, putUsuario) //atualização
 

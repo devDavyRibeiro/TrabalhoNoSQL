@@ -1,5 +1,5 @@
 async function listarPets() {
-    const cpfCliente = document.getElementById('cpfCliente').value.trim();
+   // const cpfCliente = document.getElementById('cpfCliente').value.trim();
     const nome = document.getElementById('nome').value.trim();
     const especie = document.getElementById('especie').value.trim();
     const idadeMinima = document.getElementById('idadeMinima').value.trim();
@@ -10,7 +10,7 @@ async function listarPets() {
 
     const params = new URLSearchParams();
 
-    if (cpfCliente) params.append('cpfCliente', cpfCliente);
+    /*if (cpfCliente) params.append('cpfCliente', cpfCliente);*/
     if (nome) params.append('nome' , nome);
     if (especie) params.append('especie', especie);
     if (idadeMinima) params.append('idade_min', idadeMinima);
@@ -22,7 +22,11 @@ async function listarPets() {
     }
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(url,{
+            headers: {
+                accessToken: localStorage.getItem('token')
+            }
+        });
         const pets = await response.json();
 
         const corpoTabela = document.getElementById('corpoTabela');
@@ -39,8 +43,7 @@ async function listarPets() {
                 <td>${pet.idade ? `${pet.idade} anos` : '-'}</td>
                 <td>${pet.porte || '-'}</td>
                 
-                <td>${pet.nome_tutor || '-'}</td>
-                <td>${pet.cpfCliente || '-'}</td>
+               
                 <td>${pet.peso || '-'}</td>
                 <td>${pet.observacoes|| '-'}</td>
                 <td>
@@ -67,12 +70,11 @@ async function verDetalhes(id) {
             <p><strong>Nome:</strong> ${pet.nome}</p>
             <p><strong>Espécie:</strong> ${pet.especie}</p>
             <p><strong>Raça:</strong> ${pet.raca}</p>
-            <p><strong>Ano Nascimento:</strong> ${pet.idade}</p>
+            <p><strong>Idade:</strong> ${pet.idade}</p>
             <p><strong>Sexo:</strong> ${pet.sexo}</p>
             <p><strong>Porte:</strong> ${pet.porte}</p>
             <p><strong>Peso:</strong> ${pet.peso}</p>
-            <p><strong>CPF do Tutor:</strong> ${pet.cpfCliente}</p>
-            <p><strong>Nome do Tutor:</strong> ${pet.nome_tutor}</p>
+            
             <p><strong>Observações:</strong> ${pet.observacoes}</p>
         `;
 
@@ -185,3 +187,13 @@ function excluirPet(id) {
         });
     }
 }
+
+/* 
+
+   <td>${pet.nome_tutor || '-'}</td>
+   <td>${pet.cpfCliente || '-'}</td>
+                
+   <p><strong>CPF do Tutor:</strong> ${pet.cpfCliente}</p>
+   <p><strong>Nome do Tutor:</strong> ${pet.nome_tutor}</p>
+                
+                */
