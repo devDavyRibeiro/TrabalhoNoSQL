@@ -1,7 +1,5 @@
 import { MongoClient } from "mongodb";
-import dotenv from 'dotenv';
 
-dotenv.config();
 let db;
 
 // função que conecta com o Banco

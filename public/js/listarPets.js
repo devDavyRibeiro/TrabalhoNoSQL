@@ -22,7 +22,11 @@ async function listarPets() {
     }
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(url,{
+            headers: {
+                accessToken: localStorage.getItem('token')
+            }
+        });
         const pets = await response.json();
 
         const corpoTabela = document.getElementById('corpoTabela');
