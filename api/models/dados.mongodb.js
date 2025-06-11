@@ -44,29 +44,6 @@ db.pet.insertMany([
 use('banco')
 db.pet.find({})
 
-use('banco')
-db.estadia.insertOne({
-    data_entrada: new Date("2000-04-29"),
-    data_saida: new Date("2014-04-29"),
-
-    pet: {
-        _id: '680c58dfd40b99dd247a9e6f'
-    }
-})
-
-
-use('banco')
-db.pet.find({})
-
-
-use('banco')
-db.client.insertOne({
-  nome: 'Davy Oliveira Ribeiro',
-  email: 'davy@gmail.com',
-  senha: '1234',
-  cpf: '47251787806',
-  nivel: 1
-})
 
 use('banco')
 db.client.find()
