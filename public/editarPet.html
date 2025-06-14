@@ -11,69 +11,75 @@
         <div class="header-container">
             <img src="/img/pet-hotel_10753981 (1).png" alt="Logo">
           <nav>
-            <ul>
-             <li><a href="index.html">Página Inicial</a></li>
-              <li><a href="cadastro.html">Cadastro de Pet</a></li>
+            <ul class="d-flex">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="login.html">Login</a></li>
+              <li><a href="cadastro.html">Cadastrar Pet</a></li>
               <li><a href="consultarPets.html">Consultar Pets</a></li>
             </ul>
           </nav>
         </div>
       </header>
 
-      <div class="container">
-
-  <h1>Editar Pet</h1>
-
-  <form id="formEditarPet">
-    <input type="hidden" id="id">
-
-    <label>Nome:</label>
-    <input type="text" id="nome" required>
-
-    <label for="especie">Espécie:</label>
-    <select id="especie" name="especie">
-      <option value="selecione">Selecione</option>
-      <option value="Cachorro">Cachorro</option>
-      <option value="Gato">Gato</option>
-      <option value="Coelho">Coelho</option>
-      <option value="Hamster">Hamster</option>
-      <option value="Outro">Outro</option>
-    </select>
-
-    <label>Raça:</label>
-    <input type="text" id="raca">
-
-    
-
-    <label>Sexo:</label>
-    <select id="sexo" required>
-      <option value="Macho">Macho</option>
-      <option value="Fêmea">Fêmea</option>
-    </select><br>
-
-    <label>Idade (em anos):</label>
-    <input type="number" id="idade" required>
-
-    <label>Porte:</label>
-    <input type="text" id="porte">
-
-    <label>Peso (kg):</label>
-    <input type="number" id="peso"  step="any">
-<!--
-    <label>CPF do Tutor:</label>
-    <input type="text" id="cpfCliente" required>
-
-    <label>Nome do Tutor:</label>
-    <input type="text" id="nome_tutor" required>
--->
-    <label>Observações:</label>
-    <textarea id="observacoes" name="observacoes"></textarea>
-
-    <button type="submit">Salvar alterações</button>
-  </form>
+  <div class="container">
+  <div class="card border-4 border-success-subtle rounded shadow-sm">
+    <div class="card-header">
+      <h1>Editar Pet</h1>
+    </div>
+    <div class="card-body">
+      <form id="formEditarPet">
+        <input type="hidden" id="id">
+  
+        <label>Nome:</label>
+        <input type="text" id="nome" required>
+  
+        <label for="especie">Espécie:</label>
+        <select id="especie" name="especie">
+          <option value="selecione">Selecione</option>
+          <option value="Cachorro">Cachorro</option>
+          <option value="Gato">Gato</option>
+          <option value="Coelho">Coelho</option>
+          <option value="Hamster">Hamster</option>
+          <option value="Outro">Outro</option>
+        </select>
+  
+        <label>Raça:</label>
+        <input type="text" id="raca">
+  
+        
+  
+        <label>Sexo:</label>
+        <select id="sexo" required>
+          <option value="Macho">Macho</option>
+          <option value="Fêmea">Fêmea</option>
+        </select><br>
+  
+        <label>Idade (em anos):</label>
+        <input type="number" id="idade" required>
+  
+        <label>Porte:</label>
+        <input type="text" id="porte">
+  
+        <label>Peso (kg):</label>
+        <input type="number" id="peso"  step="any">
+    <!--
+        <label>CPF do Tutor:</label>
+        <input type="text" id="cpfCliente" required>
+  
+        <label>Nome do Tutor:</label>
+        <input type="text" id="nome_tutor" required>
+    -->
+        <label>Observações:</label>
+        <textarea id="observacoes" name="observacoes"></textarea>
+  
+        <button type="submit">Salvar alterações</button>
+      </form>
+    </div>
+  </div>
+  
 </div>
 </body>
-
-<script src="/js/listarPets.js"></script>
+  <script src="js/functions.js"></script>
+  <script src="/js/listarPets.js"></script>
 
 </html>

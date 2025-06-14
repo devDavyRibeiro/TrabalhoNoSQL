@@ -78,10 +78,10 @@ POST {{baseUsuario}}
 Content-Type: application/json
 
 {
-  "cpf":"47251787806",
-  "nome": "Davy Oliveira Ribeiro",
-  "email":"davy.oliv.ribeiro@gmail.com",
-  "senha" : "{{senha}}"
+  "nome": "Joao",
+  "cpf": "47251787806",
+  "email": "joao@gmail.com",
+  "senha": "{{senha}}"
 }
 
 ###
@@ -91,9 +91,9 @@ PUT @{{baseUsuario}}/68476119496d5d43f5f4dffc
 Content-Type: application/json
 
 {
-  "nome": "Davy",
+  "nome": "Joao",
   "cpf": "47251787806",
-  "email": "davy@gmail.com",
+  "email": "joao@gmail.com",
   "senha": "{{senha}}"
 }
 

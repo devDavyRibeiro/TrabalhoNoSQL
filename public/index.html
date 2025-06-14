@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,16 +10,18 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-  
+
   <link rel="stylesheet" href="css/style.css" />
   <style>
     header {
       background-color: #4caf50;
       padding: 1rem 2rem;
     }
+
     header img {
       height: 50px;
     }
+
     nav ul {
       list-style: none;
       margin: 0;
@@ -26,11 +29,13 @@
       display: flex;
       gap: 1.5rem;
     }
+
     nav ul li a {
       text-decoration: none;
       color: white;
       font-weight: 500;
     }
+
     .hero {
       background: url('/img/Hotel para Pets.png') no-repeat center center/cover;
       height: 80vh;
@@ -42,20 +47,24 @@
       background-size: cover;
       background-position: center;
     }
+
     .hero h1 {
       font-size: 3rem;
       font-weight: bold;
       text-shadow: 1px 1px 5px #000;
     }
+
     .hero p {
       font-size: 1.3rem;
       margin-top: 1rem;
       text-shadow: 1px 1px 5px #000;
     }
-    .card-icon {
+
+    .card border-4 border-success-subtle rounded shadow-sm-icon {
       width: 60px;
       margin-bottom: 10px;
     }
+
     footer {
       background-color: #4caf50;
       color: white;
@@ -73,263 +82,76 @@
     <img src="/img/pet-hotel_10753981 (1).png" alt="Logo" />
     <nav>
       <ul class="d-flex">
-        <li><a href="index.html">Login</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
         <li><a href="cadastro.html">Cadastrar Pet</a></li>
         <li><a href="consultarPets.html">Consultar Pets</a></li>
       </ul>
     </nav>
-  </header>
-
-  <!-- HERO / BANNER -->
-  <section class="hero">
+  </header> 
+  <main> <!-- HERO / BANNER -->
+    <section class="hero">
+      
+    </section>
     
-  </section>
-
-  <!-- SOBRE O PROJETO -->
-  <section class="container my-5">
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <h2 class="text-success">Sobre o DoaPet</h2>
-        <p class="mt-3">
-          O DoaPet é uma ONG dedicada a ajudar pets adultos a encontrarem novas famílias. Muitas vezes esquecidos por causa da idade, esses animais têm tanto amor para dar quanto qualquer outro.
-        </p>
-      </div>
-      <div class="col-md-6 text-center">
-        <img src="/img/Hotel para Pets.png" class="img-fluid rounded shadow" alt="Pets adultos" />
-      </div>
-    </div>
-  </section>
-
-  <!-- VANTAGENS DE ADOTAR UM PET ADULTO -->
-  <section class="bg-light py-5">
-    <div class="container">
-      <h2 class="text-center text-success mb-4">Por que adotar um pet adulto?</h2>
-      <div class="row justify-content-center text-center">
-
-        <div class="col-6 col-md-3 mb-4">
-          <img src="/img/hospedagem.png" class="card-icon" alt="">
-          <h5>Comportamento conhecido</h5>
-          <p>Pets adultos já têm a personalidade formada, sem surpresas.</p>
-        </div>
-
-        <div class="col-6 col-md-3 mb-4">
-          <img src="/img/recreacao.png" class="card-icon" alt="">
-          <h5>Mais tranquilos</h5>
-          <p>Geralmente são mais calmos e precisam de menos energia para cuidar.</p>
-        </div>
-
-        <div class="col-6 col-md-3 mb-4">
-          <img src="/img/alimentacao.png" class="card-icon" alt="">
-          <h5>Gratidão eterna</h5>
-          <p>Adotar um adulto é ganhar um amigo leal e eternamente grato.</p>
-        </div>
-
-        <div class="col-6 col-md-3 mb-4">
-          <img src="/img/monitoramento.png" class="card-icon" alt="">
-          <h5>Prontos para amar</h5>
-          <p>Já estão prontos para passear, brincar e receber muito carinho.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <main class="container p-0">
-    <section class="row">
-      <div class="card border-4 border-success-subtle rounded shadow-sm">
-        <header class="card-header">
-          <h1>Entrar</h1>
-        </header>
-        <article class="card-body">
-          <form>
-            <div class="mb-2">                
-              <label for="email" class="form-label">Email</label>
-              <input type="email" name="email" id="email" class="form-control" autofocus autocomplete="email">
-            </div>
-            <div class="mb-2">
-              <label for="senha" class="form-label">Senha</label>
-              <input type="password" name="senha" id="senha" class="form-control" required>
-            </div>
-            <div class="mb-3 mx-auto">
-              <button type="submit" class="btn btn-success px-4">Entrar</button>
-            </div>
-          </form>
-        </article>
-        <footer class="card-footer m-2">
-          <p>Não possui uma conta? 
-            <span> 
-              <a href="cadastrar-se.html">Cadastre-se aqui</a>
-            </span>
+    <!-- SOBRE O PROJETO -->
+    <section class="container my-5">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h2 class="text-success">Sobre o DoaPet</h2>
+          <p class="mt-3">
+            O DoaPet é uma ONG dedicada a ajudar pets adultos a encontrarem novas famílias. Muitas vezes esquecidos por
+            causa da idade, esses animais têm tanto amor para dar quanto qualquer outro.
           </p>
-        </footer>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="/img/Hotel para Pets.png" class="img-fluid rounded shadow" alt="Pets adultos" />
+        </div>
       </div>
     </section>
 
+    <hr>
+
+    <!-- VANTAGENS DE ADOTAR UM PET ADULTO -->
+    <section class="bg-light py-5">
+      <div class="container">
+        <h2 class="text-center text-success mb-4">Por que adotar um pet adulto?</h2>
+        <div class="row justify-content-center text-center">
+
+          <div class="col-6 col-md-3 mb-4">
+            <img src="/img/hospedagem.png" class="card border-4 border-success-subtle rounded shadow-sm-icon" alt="">
+            <h5>Comportamento conhecido</h5>
+            <p>Pets adultos já têm a personalidade formada, sem surpresas.</p>
+          </div>
+
+          <div class="col-6 col-md-3 mb-4">
+            <img src="/img/recreacao.png" class="card border-4 border-success-subtle rounded shadow-sm-icon" alt="">
+            <h5>Mais tranquilos</h5>
+            <p>Geralmente são mais calmos e precisam de menos energia para cuidar.</p>
+          </div>
+
+          <div class="col-6 col-md-3 mb-4">
+            <img src="/img/alimentacao.png" class="card border-4 border-success-subtle rounded shadow-sm-icon" alt="">
+            <h5>Gratidão eterna</h5>
+            <p>Adotar um adulto é ganhar um amigo leal e eternamente grato.</p>
+          </div>
+
+          <div class="col-6 col-md-3 mb-4">
+            <img src="/img/monitoramento.png" class="card border-4 border-success-subtle rounded shadow-sm-icon" alt="">
+            <h5>Prontos para amar</h5>
+            <p>Já estão prontos para passear, brincar e receber muito carinho.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- RODAPÉ -->
   <footer>
     <p>&copy; 2025 DoaPet - Todos os direitos reservados</p>
   </footer>
 
-</body>
-</html>
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria de Pets</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-  <header>
-    <div class="header-container">
-      <img src="/img/pet-hotel_10753981 (1).png" alt="Logo">
-      <nav>
-        <ul>
-          <li><a href="index.html">Login</a></li>
-          <li><a href="cadastro.html">Cadastro de Pet</a></li>
-          <li><a href="consultarPets.html">Consultar Pets</a></li>
-
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container p-0">
-    <section class="row">
-      <div class="card border-4 border-success-subtle rounded shadow-sm">
-        <header class="card-header">
-          <h1>Entrar</h1>
-        </header>
-        <article class="card-body">
-          <form id="formulario">
-            <div class="mb-2">                
-              <label for="email" class="form-label">Email</label>
-              <input type="email" name="email" id="email" class="form-control" autofocus autocomplete="email">
-            </div>
-            <div class="mb-2">
-              <label for="senha" class="form-label">Senha</label>
-              <input type="password" name="senha" id="senha" class="form-control" required>
-            </div>
-            <div class="mb-3 mx-auto">
-              <button type="submit" class="btn btn-success px-4">Entrar</button>
-            </div>
-          </form>
-        </article>
-        <footer class="card-footer m-2">
-          <p>Não possui uma conta? 
-            <span> 
-              <a href="cadastrar-se.html">Cadastre-se aqui</a>
-            </span>
-          </p>
-        </footer>
-      </div>
-    </section>
-
-
-
-
-
-    <!--    Banner e Imagem principal
-    <section class='banner'>
-      <div class="titulo">
-          <h1>Hotel Pets</h1>
-      </div>
-    </section> 
-
-    <div class="card mb-4 align-items-center justify-content-center " style="width: auto; height: 300px;" >
-      <div class="row g-0 align-items-center justify-content-center ">
-        <div class="col-md-4">
-          <img src="/img/Hotel para Pets.png" class="img-fluid img-card ms-4" alt="..." style="width: 400px;">
-        </div>
-        <div class="col-md-8 ">
-          <div class="card-body me-5 ">
-            <h5 class="card-title p-3">Bem-vindo ao nosso Hotel!</h5>
-            <p class="card-text text-justify"> 
-              Oferecemos um cuidado completo e carinhoso para o seu pet, com consultas veterinárias, vacinas, exames e orientações personalizadas. Nossa missão é garantir a saúde, o bem-estar e a felicidade do seu melhor amigo. Com a gente, ele está sempre em boas mãos!
-            </p>
-            
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- 
-    <section class="container-fluid bg-gradient text-white py-5" style="background-color: #4CAF50;">
-      <h2 class="text-center mb-4 text-white">Nossos Serviços</h2>
-      <div class="row justify-content-center text-center">
-
-        <div class="col-md-2 mx-3 mb-4 p-3 bg-white text-dark rounded shadow">
-          <img src="/img/hospedagem.png" class="img-fluid mb-2" width="60">
-          <h5>Hospedagem</h5>
-          <p>Ambiente seguro, limpo e confortável para o seu pet descansar.</p>
-        </div>
-
-        <div class="col-md-2 mx-3 mb-4 p-3 bg-white text-dark rounded shadow">
-          <img src="/img/recreacao.png" class="img-fluid mb-2" width="60">
-          <h5>Recreação</h5>
-          <p>Atividades diárias para manter seu pet feliz e ativo.</p>
-        </div>
-
-        <div class="col-md-2 mx-3 mb-4 p-3 bg-white text-dark rounded shadow">
-          <img src="/img/alimentacao.png" class="img-fluid mb-2" width="60">
-          <h5>Alimentação</h5>
-          <p>Refeições balanceadas conforme as necessidades do seu pet.</p>
-        </div>
-
-        <div class="col-md-2 mx-3 mb-4 p-3 bg-white text-dark rounded shadow">
-          <img src="/img/monitoramento.png" class="img-fluid mb-2" width="60">
-          <h5>Monitoramento</h5>
-          <p>Supervisão 24h para garantir total segurança e bem-estar.</p>
-        </div>
-
-        <div class="col-md-2 mx-3 mb-4 p-3 bg-white text-dark rounded shadow">
-          <img src="/img/banhotosa.png" class="img-fluid mb-2" width="60">
-          <h5>Banho e Tosa</h5>
-          <p>Cuidados com higiene e estética para deixar seu pet lindo!</p>
-        </div>
-
-      </div>
-    </section> -->
-
-    <!-- Seção Contato e Informações do Hotel
-    <section class="container-fluid  py-5">
-      <h2 class="text-center mb-4 ">Informações do Hotel</h2>
-      <div class="row justify-content-center text-center">
-
-        <div class="col-md-3 mx-3 p-3 rounded shadow " style="background-color: #4CAF50;"">
-          <h5>📍 Endereço</h5>
-          <p>Rua dos Bichinhos, 123 - Bairro Petland<br>Cidade Animal, BR</p>
-        </div>
-
-        <div class="col-md-3 mx-3 p-3 rounded shadow" style="background-color: #4CAF50;">
-          <h5>📞 Telefone</h5>
-          <p>(11) 1234-5678<br>(11) 91234-5678</p>
-        </div>
-
-        <div class="col-md-3 mx-3 p-3 rounded shadow " style="background-color: #4CAF50;">
-          <h5>⏰ Horário de Funcionamento</h5>
-          <p>24 Horas!</p>
-        </div>
-
-      </div>
-    </section> -->
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Hotel Para Pets - Todos os direitos reservados</p>
-  </footer>
-</body>
-
+    <script src="js/functions.js"></script>
+  </body>
 </html>

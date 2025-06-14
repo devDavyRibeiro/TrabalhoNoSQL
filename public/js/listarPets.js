@@ -1,3 +1,4 @@
+window.addEventListener('load',listarPets)
 async function listarPets() {
    // const cpfCliente = document.getElementById('cpfCliente').value.trim();
     const nome = document.getElementById('nome').value.trim();
@@ -27,33 +28,39 @@ async function listarPets() {
                 accessToken: localStorage.getItem('token')
             }
         });
-        const pets = await response.json();
-
-        const corpoTabela = document.getElementById('corpoTabela');
-        corpoTabela.innerHTML = "";
-
-        pets.forEach(pet => {
-            const linha = document.createElement('tr');
-
-            linha.innerHTML = `
-                <td>${pet.nome || '-'}</td>
-                <td>${pet.especie || '-'}</td>
-                <td>${pet.raca || '-'}</td>
-                <td>${pet.sexo || '-'}</td>
-                <td>${pet.idade ? `${pet.idade} anos` : '-'}</td>
-                <td>${pet.porte || '-'}</td>
-                
-               
-                <td>${pet.peso || '-'}</td>
-                <td>${pet.observacoes|| '-'}</td>
-                <td>
-                    <button onclick="verDetalhes('${pet._id}')">👁️</button>
-                    <button onclick="editarPet('${pet._id}')">✏️</button>
-                    <button onclick="excluirPet('${pet._id}')">🗑️</button>
-                </td>
-            `;
-            corpoTabela.appendChild(linha);
-        });
+        if(response.ok){
+            const pets = await response.json();
+            
+            const corpoTabela = document.getElementById('corpoTabela');
+            corpoTabela.innerHTML = "";
+    
+            pets.forEach(pet => {
+                const linha = document.createElement('tr');
+    
+                linha.innerHTML = `
+                    <td>${pet.nome || '-'}</td>
+                    <td>${pet.especie || '-'}</td>
+                    <td>${pet.raca || '-'}</td>
+                    <td>${pet.sexo || '-'}</td>
+                    <td>${pet.idade ? `${pet.idade} anos` : '-'}</td>
+                    <td>${pet.porte || '-'}</td>
+                    
+                   
+                    <td>${pet.peso || '-'}</td>
+                    <td>${pet.observacoes|| '-'}</td>
+                    <td>
+                        <button onclick="verDetalhes('${pet._id}')">👁️</button>
+                        <button onclick="editarPet('${pet._id}')">✏️</button>
+                        <button onclick="excluirPet('${pet._id}')">🗑️</button>
+                    </td>
+                `;
+                corpoTabela.appendChild(linha);
+            });
+        }
+        else{
+            console.error("erro")
+            //aparecer erro na tela
+        }
     } catch (error) {
         console.error('Erro ao listar pets:', error);
     }
