@@ -26,6 +26,7 @@ document
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          acessToken: localStorage.getItem("token")
         },
         body: JSON.stringify(data),
       });
