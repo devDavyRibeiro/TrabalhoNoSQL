@@ -6,9 +6,6 @@ Trabalho de Banco de Dados Não-Relacional sobre aplicação de uma API REST com
 
 Site para ONG cadastrar, editar e excluir pet disponível para adoção
 
-## Link do site
-
-https://trabalho-no-sql.vercel.app/
 
 ## Integrantes:
 
