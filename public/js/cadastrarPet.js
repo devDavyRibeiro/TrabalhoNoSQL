@@ -28,6 +28,8 @@ document
         },
         body: JSON.stringify(data),
       });
+        
+     
       const resultado = await response.json();
 
       if (response.ok) {

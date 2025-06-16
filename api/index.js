@@ -4,6 +4,8 @@ import usuarioRouter from './routes/usuario.js';
 import  dotenv from 'dotenv'
 import { connectMongoDB } from './config/db.js';
 import cors from 'cors'
+import swaggerUI from "swagger-ui-express"
+import fs from "fs"
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -18,6 +20,7 @@ app.use(`/`, express.static('public'))
 app.use(`/api/pets`, petRouter)
 app.use(`/api/usuarios`, usuarioRouter);  // Agora o prefixo '/agenda' será usado para suas rotas
 
+app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(JSON.parse(fs.readFileSync('./api/swagger/swagger_output.json')),))
 
 connectMongoDB(app).then(() => {
     app.listen(PORT, () => {
