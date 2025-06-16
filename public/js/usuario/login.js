@@ -26,7 +26,6 @@ document
 
       if (response.ok) {
         window.localStorage.setItem('token',dados.accessToken)
-        console.log(dados.accessToken);
         window.location.href = '../../consultarPets.html'
         return
       } 

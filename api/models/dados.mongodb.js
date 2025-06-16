@@ -45,14 +45,6 @@ use('banco')
 db.pet.find({})
 
 use('banco')
-db.client.insertOne({
-    nome: "Teste",
-    cpf: "16209087000",
-    email: "teste@exemplo.com",
-    senha: "$2b$10$x7JiftFDMbgtaJW2xszhLO/bvHKwYPhm9aC.Lwa1STERzq37zcqQy"
-})
-
-use('banco')
 db.client.createIndex({'email':1},{unique:true})
 
 use('banco')

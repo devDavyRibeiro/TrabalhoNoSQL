@@ -26,6 +26,8 @@ document
       const resultado = await response.json();
 
       if (response.ok) {
+        alert("Usuario cadastrado com sucesso!");
+        window.location.href = "../../login.html" 
         alert("usuário cadastrado com sucesso!");
         console.log(resultado);
         return;

@@ -30,12 +30,35 @@ export const validateUsuario = [
         throw new Error("CPF deve ter 11 dígitos");
       }
       return true;
-    }),
+    })
+    .custom(async (cpf, { req }) => {
+        const db = req.app.locals.db
+        if (req.method === "POST" ) { 
+          const existe = await db.collection("client").countDocuments({cpf})
+          if (existe > 0) {
+            throw new Error("CPF já cadastrado")
+          }
+
+          return true
+        }
+      }),
 
   check("email")
     .notEmpty().withMessage("Email do usuário é obrigatório")
     .isEmail()
-    .withMessage("Email Inválido"),
+    .withMessage("Email Inválido")
+    .custom(async (email, { req }) => {
+      const db = req.app.locals.db
+      if (req.method === "POST" ) { 
+          const existe = await db.collection("client").countDocuments({email})
+          if (existe > 0) {
+            throw new Error("Email já cadastrado")
+          }
+
+          return true
+        }
+    }),
+    
   check("senha")
     .notEmpty().withMessage("Senha é obrigatório")
     .isStrongPassword({
@@ -47,3 +70,12 @@ export const validateUsuario = [
     
   validateRequest,
 ];
+
+export const valideLogin = [
+  check("email")
+    .notEmpty().withMessage("Email do usuário é obrigatório")
+    .isEmail()
+    .withMessage("Email Inválido"),
+  check("senha")
+    .notEmpty().withMessage("Senha é obrigatório")
+]

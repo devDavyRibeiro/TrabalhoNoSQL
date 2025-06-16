@@ -92,7 +92,7 @@ Content-Type: application/json
 
 {
   "nome": "Teste",
-  "cpf": "47251787806",
+  "cpf": "16209087000",
   "email": "teste@exemplo.com",
   "senha": "{{senha}}"
 }
