@@ -24,14 +24,14 @@ https://trabalho-no-sql.vercel.app/
 Pega todos os documentos da collection Pet 
 
 ``` 
-    https://trabalho-no-sql.vercel.app/pets/
+    http://localhost:3000/pets/
 ```
 ### Get By Id
 
 Pega o documento pertencente ao ID mencionado 
 
 ``` 
-    https://trabalho-no-sql.vercel.app/pets/:id
+    http://localhost:3000/pets/:id
 ```
 
 ### Post
@@ -39,7 +39,7 @@ Pega o documento pertencente ao ID mencionado
 Cria um novo documento de Pet
 
 ``` 
-    https://trabalho-no-sql.vercel.app/pets/
+   http://localhost:3000/pets/
 ```
 
 ### Put
@@ -47,7 +47,7 @@ Cria um novo documento de Pet
 Atualiza um documento específico de Pet
 
 ``` 
-    https://trabalho-no-sql.vercel.app/pets/:id
+    http://localhost:3000/pets/:id
 ```
 
 ### Delete
@@ -55,7 +55,7 @@ Atualiza um documento específico de Pet
 Excluí um documento específico de Pet 
 
 ``` 
-    https://trabalho-no-sql.vercel.app/pets/:id
+    http://localhost:3000/pets/:id
 ```
 
 
