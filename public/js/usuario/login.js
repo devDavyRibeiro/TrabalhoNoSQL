@@ -25,7 +25,6 @@ document
       if (response.ok) {
         dados = await response.json();
         window.localStorage.setItem('token',dados.accessToken)
-        console.log(dados.accessToken);
         window.location.href = '../../consultarPets.html'
       } else {
         alert("Erro ao cadastrar o usuario. Verifique os dados e tente novamente.");

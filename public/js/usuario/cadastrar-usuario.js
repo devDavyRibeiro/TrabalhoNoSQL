@@ -27,6 +27,7 @@ document
 
       if (response.ok) {
         alert("Usuario cadastrado com sucesso!");
+        window.location.href = "../../login.html" 
         console.log(resultado);
         return;
       } 
