@@ -22,13 +22,27 @@ document
           body: JSON.stringify(data),
         });
 
+      const dados = await response.json();
+
       if (response.ok) {
-        dados = await response.json();
         window.localStorage.setItem('token',dados.accessToken)
         console.log(dados.accessToken);
         window.location.href = '../../consultarPets.html'
-      } else {
-        alert("Erro ao cadastrar o usuario. Verifique os dados e tente novamente.");
+        return
+      } 
+      if (dados.errors && Array.isArray(dados.errors)) {
+        const mensagensErro = dados.errors.map(e => `• ${e.msg}`).join("\n");
+        alert("Erro(s):\n" + mensagensErro);
+        return;
+      }
+
+      if (dados.message) {
+        alert("Erro: " + dados.message);
+        return;
+      }
+      else {
+        alert("Erro ao realizar o login. Verifique os dados e tente novamente.");
+        return
       }
     } catch (error) {
       console.error("Erro na requisição:", error);

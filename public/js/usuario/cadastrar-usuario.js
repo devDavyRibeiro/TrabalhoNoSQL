@@ -26,13 +26,13 @@ document
       const resultado = await response.json();
 
       if (response.ok) {
-        alert("Usuario cadastrado com sucesso!");
+        alert("usuário cadastrado com sucesso!");
         console.log(resultado);
         return;
       } 
       if (resultado.errors && Array.isArray(resultado.errors)) {
         const mensagensErro = resultado.errors.map(e => `• ${e.msg}`).join("\n");
-        alert("Erro(s) ao cadastrar o pet:\n" + mensagensErro);
+        alert("Erro(s) ao cadastrar o usuário:\n" + mensagensErro);
         return;
       }
 
@@ -40,7 +40,7 @@ document
         alert("Erro: " + resultado.message);
         return;
       }else {
-        alert("Erro ao cadastrar o usuario. Verifique os dados e tente novamente.");
+        alert("Erro ao cadastrar o usuário. Verifique os dados e tente novamente.");
          return
       }
     } catch (error) {
