@@ -1,5 +1,6 @@
+MONGO_URI = mongodb://localhost:27017/banco
 SALT_ROUNDS = 10 
 PORT = 3000
-MONGO_URI = mongodb://localhost:27017/banco
 SECRET_KEY = GALERIA123
 EXPIRES_IN = 1d
+SENHA_USUARIO = Abc@1234

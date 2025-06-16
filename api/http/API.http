@@ -14,7 +14,7 @@
 // GET - Lista todos os pets com filtros
 GET {{basePetURL}}
 Content-Type: application/json
-accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjg0NzY5MjNhOWMxOTY3YjIzYzNkOTEwIn0sImlhdCI6MTc0OTUxNzAyOCwiZXhwIjoxNzQ5NjAzNDI4fQ.87xn3diOly2g_-W4a-vvxUS8-JPeNzr2hv7mVZr0sVU
+accessToken: {{token}}
 
 ###
 // GET - Busca pet pelo ID
@@ -81,6 +81,19 @@ Content-Type: application/json
   "nome": "Joao",
   "cpf": "47251787806",
   "email": "joao@gmail.com",
+  "senha": "{{senha}}"
+}
+
+###
+// POST para o JEST - Cadastrar 
+# @prompt senha
+POST {{baseUsuario}}
+Content-Type: application/json
+
+{
+  "nome": "Teste",
+  "cpf": "47251787806",
+  "email": "teste@exemplo.com",
   "senha": "{{senha}}"
 }
 

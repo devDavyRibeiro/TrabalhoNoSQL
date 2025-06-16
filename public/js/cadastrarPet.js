@@ -15,8 +15,6 @@ document
       idade: parseInt(formData.get("idade")),
       sexo: formData.get("sexo"),
       porte: formData.get("porte"),
-      /*nome_tutor: formData.get("nome_tutor"),
-      cpfCliente: formData.get("cpfCliente"),*/
       peso: parseFloat(formData.get("peso")),
       observacoes: formData.get("observacoes"),
     };
@@ -26,7 +24,7 @@ document
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          acessToken: localStorage.getItem("token")
+          accessToken: localStorage.getItem('token')
         },
         body: JSON.stringify(data),
       });
