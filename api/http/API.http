@@ -85,6 +85,19 @@ Content-Type: application/json
 }
 
 ###
+// POST para o JEST - Cadastrar 
+# @prompt senha
+POST {{baseUsuario}}
+Content-Type: application/json
+
+{
+  "nome": "Teste",
+  "cpf": "47251787806",
+  "email": "teste@exemplo.com",
+  "senha": "{{senha}}"
+}
+
+###
 // PUT - Atualizar usuário
 # @prompt senha
 PUT @{{baseUsuario}}/68476119496d5d43f5f4dffc
